@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pei Ru Hao, Jennifer – Health Reports</title>
+<style>
+  /* =========================================================
+     Global vars + base
+  ========================================================= */
+  :root{
+    /* SpectraCell palette */
+    --brand-blue:#1E4C7E;
+    --brand-blue-2:#3D7CB0;
+    --teal:#5CA3B8;
+    --lime:#A6CE39;
+    --lime-dark:#8FB825;
+    --gray-lt:#E6E6E6;
+    --gray-md:#B0B0B0;
+    --gray-dk:#7A7A7A;
+    --gray-tx:#4A4A4A;
+    --yellow:#F2E14C;
+    --red:#D13D2F;
+    --hdr-bg:#DCEAD2;
+    --bg-soft:#EEEEEE;
+
+    /* IntellxxDNA palette */
+    --ix-teal:#2BA29A;
+    --ix-teal-dk:#208F87;
+    --ix-red:#F2A19F;
+    --ix-yellow:#FCE56C;
+    --ix-green:#9CE5A3;
+    --ix-flag-bg:#FBE5D6;
+    --ix-blue:#1F3A8A;
+    --ix-green-tx:#1F7B3E;
+    --ix-text:#1f1f1f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#5b6a73;
+    color:var(--gray-tx);
+    line-height:1.4;
+  }
+
+  /* =========================================================
+     Sticky tab navigation - editorial style
+  ========================================================= */
+  .topnav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fbf8f3;
+    border-bottom:1px solid #e8e2d6;
+  }
+  .topnav-inner{
+    max-width:9.5in;
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-family:Georgia, 'Times New Roman', serif;
+    font-size:24px;
+    color:#1a1a1a;
+    letter-spacing:-.3px;
+    line-height:1;
+    display:flex;
+    align-items:baseline;
+  }
+  .brand .lhs{font-weight:400}
+  .brand .slash{color:#7a7a7a;margin:0 1px;font-weight:300}
+  .brand .rhs{font-style:italic;font-weight:400}
+  .tabs{display:flex;gap:30px;align-items:center}
+  .tabs button{
+    background:transparent;
+    color:#6b6b6b;
+    border:none;
+    padding:6px 0;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:.1px;
+    cursor:pointer;
+    position:relative;
+    font-family:inherit;
+    transition:color .18s ease;
+  }
+  .tabs button::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;
+    bottom:-3px;
+    height:2px;
+    background:#1a1a1a;
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .25s ease;
+  }
+  .tabs button:hover{color:#1a1a1a}
+  .tabs button.active{color:#1a1a1a;font-weight:600}
+  .tabs button.active::after{transform:scaleX(1)}
+  .tab-section{padding:30px 0;scroll-margin-top:80px}
+
+  /* =========================================================
+     Page card (shared)
+  ========================================================= */
+  .page{
+    width:8.5in;
+    min-height:11in;
+    margin:0 auto 24px;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(0,0,0,.25);
+    padding:.5in;
+    position:relative;
+  }
+
+  /* =========================================================
+     ====== INTELLXXDNA STYLES ======
+  ========================================================= */
+  .ix-page{padding:.5in .55in}
+  .ix-header{display:flex;justify-content:flex-end;margin-bottom:8px}
+  .ix-logo{text-align:right}
+  .ix-logo .word{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:32px;
+    letter-spacing:-.5px;
+    color:#3f3f3f;
+    line-height:1;
+  }
+  .ix-logo .word .x1{color:#3f3f3f}
+  .ix-logo .word .x2{color:#7c3a8a}
+  .ix-logo .word sup{font-size:11px;font-weight:700;vertical-align:super;color:#666}
+  .ix-logo .bar{
+    height:4px;
+    width:200px;
+    margin-top:6px;
+    background:linear-gradient(to right,
+      #c5db4c 0% 18%,
+      #5fb858 18% 36%,
+      #c83a8c 36% 54%,
+      #6f4ba1 54% 72%,
+      #f37522 72% 86%,
+      #2BA29A 86% 100%);
+    margin-left:auto;
+  }
+  .ix-logo .tagline{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-style:italic;
+    font-size:11px;
+    color:#666;
+    margin-top:4px;
+  }
+  .ix-title{
+    text-align:center;
+    margin:20px 0 6px;
+    color:#000;
+    font-weight:700;
+    font-size:26px;
+  }
+  .ix-subtitle{
+    text-align:center;
+    color:#000;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:16px;
+  }
+
+  /* Table */
+  .ix-table{
+    border:1px solid #d8e6e5;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .ix-thead{
+    display:grid;
+    grid-template-columns:90px 80px 60px 110px 1fr;
+    background:var(--ix-teal);
+    color:#fff;
+    font-weight:700;
+    font-size:11px;
+    text-align:center;
+  }
+  .ix-thead > div{padding:10px 8px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .ix-thead .stack{line-height:1.3}
+  .ix-thead .underline{text-decoration:underline;text-underline-offset:2px}
+
+  .ix-row{
+    display:grid;
+    grid-template-columns:90px 80px 60px 110px 1fr;
+    border-bottom:1px solid #e9e9e9;
+    background:#fff;
+    min-height:90px;
+  }
+  .ix-row:last-child{border-bottom:none}
+  .ix-row.flagged{background:#FBE5D6}
+  .ix-row > div{padding:14px 12px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .ix-row > div.snp{align-items:flex-start;text-align:left;padding:14px 18px}
+  .ix-cell-gene{font-size:12px}
+  .ix-cell-gene .gene{font-style:italic;font-weight:400;color:#000}
+  .ix-cell-gene .allele{color:#000;font-size:11px;margin-top:2px}
+  .ix-cell-gene .flag{
+    display:inline-block;
+    margin-bottom:6px;
+    color:#e07b3a;
+    font-size:18px;
+  }
+  .ix-cell-result{font-size:11px;color:#000}
+  .ix-cell-result .geno{display:block}
+  .ix-cell-result .prev{display:block;margin-top:2px}
+  .ix-cell-variant{
+    color:#000;
+    font-weight:700;
+    font-size:14px;
+    width:100%;
+    height:100%;
+  }
+  .ix-cell-variant.v-red{background:var(--ix-red)}
+  .ix-cell-variant.v-yellow{background:var(--ix-yellow)}
+  .ix-cell-variant.v-green{background:var(--ix-green)}
+  .ix-cell-panel{font-size:10.5px;font-weight:700;color:#000;line-height:1.35}
+  .ix-cell-panel .secondary{
+    font-weight:400;
+    border-top:1px solid #cfcfcf;
+    padding-top:3px;
+    margin-top:3px;
+    font-size:10px;
+  }
+  .ix-cell-panel .underline{text-decoration:underline}
+  .snp-title{font-weight:700;font-size:11px;color:#000;line-height:1.45}
+  .snp-effect{
+    color:var(--ix-blue);
+    font-style:italic;
+    font-weight:700;
+    font-size:11px;
+    margin-left:4px;
+  }
+  .snp-desc{
+    color:var(--ix-green-tx);
+    font-style:italic;
+    font-weight:700;
+    font-size:11px;
+    margin-top:8px;
+    line-height:1.55;
+  }
+  .snp-warn{
+    color:#a31e1e;
+    font-weight:700;
+    font-size:11px;
+  }
+  .ix-pagenum{
+    text-align:center;
+    color:#000;
+    font-size:11px;
+    position:absolute;
+    bottom:.35in;
+    left:0;
+    right:0;
+  }
+
+  /* =========================================================
+     ====== SPECTRACELL STYLES (from earlier) ======
+  ========================================================= */
+  .sc .page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:8px;
+  }
+  .sc .logo{display:flex;align-items:center;gap:8px}
+  .sc .logo-tiles{display:grid;grid-template-columns:14px 14px;gap:0}
+  .sc .logo-tiles span{display:block;width:14px;height:14px}
+  .sc .logo-tiles span:nth-child(1){background:var(--brand-blue-2)}
+  .sc .logo-tiles span:nth-child(2){background:var(--lime)}
+  .sc .logo-tiles span:nth-child(3){background:var(--gray-md)}
+  .sc .logo-tiles span:nth-child(4){background:var(--brand-blue-2)}
+  .sc .logo-text{line-height:1.05}
+  .sc .logo-text .name{font-size:18px;font-weight:700;color:var(--brand-blue);letter-spacing:.5px}
+  .sc .logo-text .tag{font-size:6px;color:var(--lime-dark);letter-spacing:1.5px;font-weight:600;margin-top:2px}
+  .sc .contact{font-size:8px;color:var(--gray-tx);text-align:right;line-height:1.5}
+  .sc .patient-strip{
+    background:var(--bg-soft);
+    padding:6px 10px;
+    font-size:9px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .sc .patient-strip span.lbl{color:var(--gray-tx)}
+  .sc .patient-strip span.val{font-weight:700;color:var(--gray-tx);margin-left:4px}
+  .sc .page-footer{
+    position:absolute;
+    bottom:.35in;
+    left:.5in;
+    right:.5in;
+    border-top:1px solid var(--gray-lt);
+    padding-top:6px;
+    display:flex;
+    justify-content:space-between;
+    font-size:7px;
+    color:var(--gray-dk);
+  }
+  .sc .page-footer .pn{
+    position:absolute;
+    left:0;right:0;
+    bottom:-14px;
+    text-align:center;
+    font-size:7px;
+    color:var(--gray-dk);
+  }
+  .cover .big-logo{display:flex;align-items:center;gap:10px;margin-top:20px}
+  .cover .big-logo .logo-tiles span{width:18px;height:18px}
+  .cover .big-logo .logo-tiles{grid-template-columns:18px 18px}
+  .cover .big-logo .name{font-size:22px}
+  .cover .big-logo .tag{font-size:7px}
+  .cover .network{position:relative;height:430px;margin:30px 0 8px}
+  .cover .micronutrient{position:absolute;right:50px;bottom:30px;font-size:30px;font-weight:700;letter-spacing:1px}
+  .cover .micronutrient .micro{color:var(--lime-dark)}
+  .cover .micronutrient .nutr{color:var(--brand-blue)}
+  .cover .tagline{position:absolute;right:50px;bottom:8px;font-style:italic;font-size:12px;color:var(--gray-tx);letter-spacing:1px}
+  .cover .tagline em{font-style:italic}
+  .cover .meta-block{margin-top:14px}
+  .cover .meta-block .row{margin:3px 0;font-size:10px}
+  .cover .meta-block strong{color:var(--gray-tx)}
+  .cover .notice{margin-top:18px;font-size:9px;color:var(--gray-tx);line-height:1.45}
+  .cover .notice p{margin-bottom:8px}
+  .cover .order-status{margin-top:14px;font-size:10px}
+  .cover .order-status .red{color:var(--red);font-weight:600}
+
+  .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:30px}
+  .info-card{background:var(--bg-soft);overflow:hidden}
+  .info-card .head{padding:4px 10px;font-size:9px;font-weight:700;letter-spacing:.5px}
+  .info-card.patient .head{background:var(--hdr-bg);color:var(--brand-blue)}
+  .info-card.specimen .head,
+  .info-card.provider .head{background:var(--gray-lt);color:var(--gray-dk)}
+  .info-card .body{display:grid;grid-template-columns:1fr 1fr;gap:6px 0;padding:8px 10px;font-size:8px}
+  .info-card .body .field{line-height:1.3}
+  .info-card .body .field .lbl{color:var(--gray-dk);text-transform:uppercase;font-size:7px;letter-spacing:.3px}
+  .info-card .body .field .val{color:var(--brand-blue);font-weight:700;font-size:8px;display:block;margin-top:1px}
+  .info-card .body .field.full{grid-column:1/-1}
+  .info-card .body .field .val.smaller{font-size:6.5px}
+
+  .welcome-title{text-align:center;color:var(--brand-blue);font-style:italic;font-size:18px;font-weight:600;margin-top:18px}
+  .rule{width:50px;height:1px;background:var(--gray-md);margin:6px auto 12px}
+  .welcome-body{text-align:center;font-size:9px;color:var(--gray-tx);max-width:78%;margin:0 auto 22px;line-height:1.5}
+  .advantage-title{text-align:center;color:var(--brand-blue);font-style:italic;font-size:16px;font-weight:600;margin-top:8px}
+  .advantage-sub{text-align:center;color:var(--gray-tx);font-weight:700;font-size:9px}
+  .advantage-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:30px;padding:0 30px}
+  .advantage-grid .col{text-align:center}
+  .advantage-grid .col h4{color:var(--brand-blue);font-size:11px;font-weight:700;margin-bottom:10px}
+  .advantage-grid .icon-circ{width:28px;height:28px;background:var(--brand-blue-2);border-radius:50%;margin:0 auto 12px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+  .icon-circ.gear::after{content:"";position:absolute;width:10px;height:10px;background:var(--lime);top:-2px;right:-2px;border-radius:50%}
+  .advantage-grid .col p{font-size:8px;color:var(--gray-tx);line-height:1.5}
+  .center-strap{text-align:center;font-size:9px;color:var(--gray-tx);margin:6px 0 16px}
+
+  .what-title{text-align:center;color:var(--brand-blue);font-style:italic;font-size:16px;font-weight:600;margin-top:8px}
+  .what-body{text-align:center;font-size:9px;color:var(--gray-tx);max-width:84%;margin:0 auto 22px;line-height:1.5}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;padding:0 20px;margin-bottom:30px}
+  .cat{display:flex;gap:12px;align-items:flex-start}
+  .cat .glyph{flex:0 0 30px;height:30px;border:1.2px solid var(--brand-blue-2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--brand-blue-2);font-size:14px}
+  .cat h5{font-size:10px;font-weight:700;color:var(--brand-blue);margin-bottom:3px}
+  .cat p{font-size:8.5px;color:var(--gray-tx);line-height:1.5}
+  .glance-title{text-align:center;color:var(--brand-blue);font-style:italic;font-size:16px;font-weight:600;margin:8px 0 0}
+  .section-band{background:var(--hdr-bg);color:var(--brand-blue);font-weight:700;font-size:10px;text-align:center;padding:5px 0;margin-top:14px}
+  .col-headers{display:grid;grid-template-columns:120px 1fr 140px;padding:6px 10px;border-bottom:1px solid var(--gray-lt);font-weight:700;font-size:8px;color:var(--gray-tx)}
+  .empty-row{text-align:center;padding:14px 0;font-size:9px;color:var(--gray-tx)}
+  .footnote{font-size:6px;color:var(--gray-tx);line-height:1.5;margin:14px 0 0}
+  .borderline-list .row{display:grid;grid-template-columns:160px 1fr;padding:5px 10px;border-bottom:.5px solid var(--gray-lt);font-size:9px;color:var(--gray-tx)}
+
+  .three-col{display:grid;grid-template-columns:1fr 1fr 2fr;gap:20px;align-items:flex-start;margin-top:8px}
+  .col-title h3{color:var(--brand-blue);font-size:13px;font-weight:700}
+  .col-title p{color:var(--gray-tx);font-size:10px;margin-bottom:8px}
+  .vert-bar-wrap{display:flex;justify-content:center}
+  .legend-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px}
+  .leg{display:flex;gap:8px;align-items:flex-start;font-size:7.5px;color:var(--gray-tx);line-height:1.4}
+  .leg .dot{flex:0 0 12px;height:12px;border-radius:50%;margin-top:1px}
+  .leg .dot.def{background:var(--red)}
+  .leg .dot.avg{background:#000}
+  .leg .dot.str{background:#fff;border:1.2px solid var(--lime-dark)}
+  .leg b{color:var(--brand-blue);font-size:8.5px;display:block;margin-bottom:1px}
+  .detail-pair{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
+  .detail-pair h4{color:var(--brand-blue);font-size:12px;margin-bottom:6px}
+  .detail-pair p{font-size:8.5px;line-height:1.5;color:var(--gray-tx)}
+
+  .table-head{display:grid;grid-template-columns:160px 1fr 65px 55px 110px;padding:8px 0;border-bottom:1px solid var(--brand-blue);color:var(--gray-tx);font-size:8.5px;font-weight:700}
+  .table-head .stk{display:block;font-size:8px}
+  .row-section{color:var(--brand-blue);font-weight:700;font-size:9px;padding:7px 0 4px;border-bottom:.5px solid var(--gray-lt)}
+  .row-data{display:grid;grid-template-columns:160px 1fr 65px 55px 110px;align-items:center;padding:5px 0;border-bottom:.5px solid var(--gray-lt);font-size:8.5px}
+  .row-data .name{color:var(--gray-tx)}
+  .row-data .ref{color:var(--lime-dark);font-weight:600}
+  .row-data .val{color:var(--lime-dark);font-weight:600}
+  .row-data.borderline .val{color:#000;font-weight:700}
+  .row-data .interp{color:var(--gray-tx)}
+  .row-data.notrep .val{color:var(--red);font-weight:700}
+  .row-data.notrep .interp{color:var(--red)}
+  .legend-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px}
+  .table-note{font-style:italic;font-weight:700;text-align:center;font-size:7.5px;color:var(--gray-tx);margin-top:10px}
+
+  .barchart-section h3{color:var(--brand-blue);font-size:14px;margin:18px 0 6px}
+  .barchart-section.first h3{margin-top:6px}
+  .bar-grid{display:grid;gap:10px;align-items:end;padding-bottom:8px;border-bottom:.5px solid var(--gray-lt)}
+  .bar-grid.eight{grid-template-columns:repeat(8,1fr)}
+  .bar-grid.seven{grid-template-columns:repeat(7,1fr)}
+  .bar-grid.three{grid-template-columns:repeat(3,1fr)}
+  .bar-cell{display:flex;flex-direction:column;align-items:center}
+  .bar-cell .label{font-size:7.5px;color:var(--gray-tx);margin-top:6px;text-align:center}
+  .legend-mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 0 14px}
+
+  .carb-row{display:grid;grid-template-columns:90px 1fr 90px 1fr 90px;gap:10px;align-items:flex-start;margin-top:8px}
+  .carb-row .desc h4{color:var(--brand-blue);font-size:9.5px;margin-bottom:3px}
+  .carb-row .desc p{font-size:7.5px;line-height:1.5;color:var(--gray-tx)}
+  .summary-block{display:grid;grid-template-columns:1fr 80px 1fr;gap:18px;margin-top:18px;padding-top:14px;border-top:.5px solid var(--gray-lt)}
+  .summary-block h4{color:var(--brand-blue);font-size:11px;margin-bottom:5px}
+  .summary-block .blurb{font-size:8px;color:var(--gray-tx);line-height:1.5}
+  .summary-block .key b{color:var(--brand-blue);font-size:7.5px;display:block;margin-top:6px}
+  .summary-block .key span{font-size:7px;color:var(--gray-tx);line-height:1.5;display:block}
+
+  .method-title{text-align:center;margin-top:14px}
+  .method-title h2{color:var(--brand-blue);font-style:italic;font-size:18px;font-weight:600}
+  .method-title .grn{color:var(--lime-dark);font-weight:700;font-size:11px;margin-top:6px}
+  .method-title .lpa{color:var(--brand-blue);font-weight:700;font-size:14px;margin-top:8px}
+  .stage{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:24px;margin:14px 0;min-height:80px}
+  .stage.alt{grid-template-columns:1fr 120px}
+  .stage .icon{background:var(--lime);width:80px;height:80px;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0% 50%);margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}
+  .stage .icon svg{width:42px;height:42px;color:var(--brand-blue)}
+  .stage .step-block{display:flex;align-items:center;gap:14px}
+  .stage.alt .step-block{flex-direction:row-reverse;text-align:right}
+  .stage .num{color:var(--brand-blue-2);font-size:18px;font-weight:700}
+  .stage .dotline{flex:0 0 60px;border-bottom:1.5px dotted var(--brand-blue-2)}
+  .stage .text h5{color:var(--brand-blue);font-size:12px;font-weight:700;margin-bottom:3px}
+  .stage .text p{font-size:9px;color:var(--gray-tx);line-height:1.5}
+  .turnaround{font-size:9px;color:var(--gray-tx);margin-top:30px}
+
+  .diagram-title{text-align:center;margin-top:8px;margin-bottom:4px}
+  .diagram-title h2{color:var(--brand-blue);font-size:18px;font-weight:700}
+  .diagram-title .grn{color:var(--lime-dark);font-weight:700;font-size:11px;margin-top:4px}
+  .key-box{border:1px solid var(--brand-blue-2);width:170px;font-size:8.5px}
+  .key-box .head{background:var(--brand-blue-2);color:#fff;text-align:center;padding:3px 0;font-weight:700}
+  .key-box .row{display:flex;align-items:center;gap:8px;padding:4px 8px}
+  .key-box .row .dot{width:12px;height:12px;border-radius:50%}
+  .abbr-key{font-size:7.5px;color:#222;line-height:1.6}
+  .abbr-key .ttl{font-weight:700;font-size:8px;margin-bottom:4px}
+  .abbr-key .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+
+  /* =========================================================
+     Section banners (top of each report)
+  ========================================================= */
+  .section-banner{
+    max-width:8.5in;
+    margin:0 auto 28px;
+    padding:30px .25in 22px;
+    color:#fff;
+  }
+  .section-banner .kicker{
+    color:#cad3d8;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .section-banner h2{
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:46px;
+    font-weight:400;
+    color:#fff;
+    margin:8px 0 6px;
+    letter-spacing:-1px;
+    line-height:1.05;
+  }
+  .section-banner h2 em{font-style:italic;color:#e6ebed}
+  .section-banner .meta{
+    color:#aab3b8;
+    font-size:13px;
+    letter-spacing:.2px;
+    margin-top:6px;
+  }
+  .section-banner .meta b{color:#dfe5e8;font-weight:600}
+  .section-banner .meta .dot{margin:0 8px;opacity:.5}
+  .section-banner .rule{
+    width:54px;height:2px;background:#cad3d8;
+    margin-top:18px;opacity:.4;
+  }
+
+  /* =========================================================
+     Biomesight gut health styles
+  ========================================================= */
+  .bs-page{padding:.5in .55in}
+  .bs-header{
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid #e0e6e6;padding-bottom:14px;margin-bottom:18px;
+  }
+  .bs-logo{display:flex;align-items:center;gap:10px}
+  .bs-logo .dot{
+    width:22px;height:22px;border-radius:50%;
+    background:radial-gradient(circle at 32% 32%,#7ed3c4 0%,#3aa395 70%);
+    position:relative;flex:0 0 22px;
+  }
+  .bs-logo .dot::after{
+    content:"";position:absolute;width:7px;height:7px;
+    background:#fff;border-radius:50%;top:4px;left:10px;
+  }
+  .bs-logo .name{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:300;font-size:22px;color:#222;letter-spacing:-.5px;
+  }
+  .bs-logo .name b{font-weight:700;color:#3aa395}
+  .bs-meta{text-align:right;font-size:9px;color:#444;line-height:1.5}
+  .bs-meta b{color:#000}
+  .bs-pn{text-align:center;font-size:9px;color:#666;margin-top:18px;padding-top:8px;border-top:1px solid #eee}
+
+  /* Wellness overview gauge */
+  .bs-overview{text-align:center;padding:8px 0 24px}
+  .bs-overview h3{font-size:18px;color:#000;font-weight:700;margin-bottom:14px}
+  .gauge-svg{display:block;margin:0 auto}
+  .gauge-num{font-size:34px;font-weight:300;line-height:1}
+  .gauge-status{font-size:11px;font-weight:700;letter-spacing:1.2px;margin-top:2px}
+  .clr-poor{color:#E74C3C}
+  .clr-needs{color:#F39C12}
+  .clr-satisfactory{color:#27AE60}
+  .clr-optimal{color:#1E8449}
+  .bg-poor{background:#fde4e2}
+  .bg-needs{background:#fdf3e2}
+  .bg-satisfactory{background:#e8f6ed}
+
+  .bs-subscores{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+    margin-top:22px;padding:0 10px;
+  }
+  .bs-subscore{text-align:center}
+  .bs-subscore .name{font-size:12px;color:#3aa395;font-weight:600;margin-bottom:6px}
+  .bs-subscore .num{font-size:15px;color:#000;font-weight:600}
+  .bs-subscore .minigauge{
+    height:6px;background:#eee;border-radius:3px;overflow:hidden;
+    margin:6px auto 0;max-width:100px;
+  }
+  .bs-subscore .minigauge .fill{height:100%}
+  .bs-overview-note{
+    font-size:9px;color:#666;font-style:italic;
+    margin-top:24px;padding:12px 24px 0;
+    border-top:1px solid #e0e6e6;line-height:1.5;
+  }
+
+  /* Sample info card */
+  .bs-sampleinfo{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:10px;background:#f7f9fa;border-radius:6px;
+    padding:14px 16px;font-size:10px;margin-bottom:18px;
+  }
+  .bs-sampleinfo .lbl{
+    color:#888;text-transform:uppercase;letter-spacing:.5px;
+    font-size:8.5px;font-weight:600;
+  }
+  .bs-sampleinfo .val{color:#000;font-weight:600;font-size:11px;margin-top:2px}
+
+  /* Category section header */
+  .bs-cat-banner{
+    display:flex;align-items:center;justify-content:space-between;
+    background:linear-gradient(to right,#fafafa 0%,#fff 100%);
+    border-left:4px solid #E67E22;
+    padding:12px 16px;margin:8px 0 14px;
+  }
+  .bs-cat-banner .left h3{font-size:18px;font-weight:700;color:#000;margin:0}
+  .bs-cat-banner .left p{font-size:10px;color:#666;margin-top:3px;max-width:430px;line-height:1.5}
+  .bs-cat-banner .right{text-align:right}
+  .bs-cat-banner .right .num{font-size:30px;font-weight:300;line-height:1}
+  .bs-cat-banner .right .status{font-size:10px;font-weight:700;letter-spacing:1px;margin-top:1px}
+
+  /* Bacteria table */
+  .bs-table-head{
+    background:#E67E22;color:#fff;display:grid;
+    grid-template-columns:140px 1fr 80px 110px 80px 50px;
+    font-size:10px;font-weight:700;padding:8px 12px;
+    border-radius:5px 5px 0 0;
+  }
+  .bs-row{
+    display:grid;
+    grid-template-columns:140px 1fr 80px 110px 80px 50px;
+    align-items:center;gap:8px;
+    padding:9px 12px;border-bottom:1px solid #eee;font-size:10px;
+  }
+  .bs-row:nth-child(even){background:#fafafa}
+  .bs-row:last-child{border-bottom:none}
+  .bs-row .bact{font-style:italic;color:#222;font-size:11px}
+  .bs-row .bact .sub{font-size:8px;color:#999;font-style:normal;display:block;margin-top:1px}
+  .bs-row .pct{font-weight:700;color:#222;text-align:center}
+  .bs-row .range{color:#555;text-align:center;font-size:9.5px}
+  .bs-row .interp{
+    display:inline-block;padding:3px 10px;border-radius:11px;
+    font-size:9px;font-weight:700;text-align:center;text-transform:uppercase;
+    letter-spacing:.3px;
+  }
+  .bs-row .interp.optimal{background:#e8f6ed;color:#1E8449}
+  .bs-row .interp.low{background:#fdf3e2;color:#B9770E}
+  .bs-row .interp.high{background:#fde4e2;color:#A93226}
+  .bs-row .score-pct{font-weight:700;color:#222;text-align:right;font-size:10px}
+
+  /* Metabolite cards */
+  .bs-section-title{
+    font-size:15px;font-weight:700;color:#000;
+    margin:18px 0 8px;padding-bottom:6px;
+    border-bottom:2px solid #E67E22;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .bs-section-title .pill{
+    font-size:9.5px;padding:3px 10px;border-radius:12px;font-weight:700;
+    letter-spacing:.4px;text-transform:uppercase;
+  }
+  .bs-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .bs-meta-card{
+    border:1px solid #e8eaeb;border-radius:6px;padding:12px;background:#fff;
+  }
+  .bs-meta-card .head{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    margin-bottom:8px;gap:8px;
+  }
+  .bs-meta-card .head .name{font-size:12px;font-weight:700;color:#000}
+  .bs-meta-card .head .target{font-size:9px;color:#777;margin-top:2px;font-weight:400}
+  .bs-meta-card .pct-line{font-size:18px;font-weight:600;color:#222;margin:4px 0 6px}
+  .bs-meta-card .pct-line .lbl{font-size:9px;color:#888;font-weight:500;margin-left:6px}
+  .bs-meta-card .benefits{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .bs-meta-card .benefit{
+    background:#e3f0fb;color:#1f5f8b;padding:2px 8px;
+    border-radius:10px;font-size:9px;font-weight:600;
+  }
+  .bs-meta-card .status-pill{
+    padding:3px 10px;border-radius:12px;
+    font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    align-self:flex-start;flex:0 0 auto;
+  }
+  .bs-meta-card .desc{
+    font-size:9.5px;color:#555;line-height:1.5;
+    margin-top:8px;padding-top:8px;border-top:1px solid #f0f0f0;
+  }
+
+  /* LPS donut block */
+  .bs-lps-block{
+    display:grid;grid-template-columns:160px 1fr;gap:24px;
+    align-items:center;padding:14px 16px;
+    background:#fafafa;border-radius:6px;margin:14px 0;
+  }
+  .bs-lps-legend{font-size:10px;line-height:1.7}
+  .bs-lps-legend .row{display:flex;align-items:center;gap:8px}
+  .bs-lps-legend .sw{width:12px;height:12px;border-radius:2px}
+
+  /* Recommendations */
+  .rec-section{margin:14px 0}
+  .rec-section h4{
+    font-size:11px;font-weight:700;color:#000;
+    text-transform:uppercase;letter-spacing:.5px;
+    padding-bottom:6px;border-bottom:1px solid #ddd;margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .rec-section h4 .lead{
+    width:8px;height:8px;border-radius:50%;
+  }
+  .rec-section h4 .lead.add{background:#27AE60}
+  .rec-section h4 .lead.reduce{background:#E67E22}
+  .rec-section h4 .help{
+    margin-left:auto;font-size:9px;color:#888;font-weight:400;
+    text-transform:none;letter-spacing:0;
+  }
+  .rec-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:6px;
+  }
+  .rec-pill{
+    background:#eef7ed;border:1px solid #cee5ca;
+    padding:7px 8px 7px 18px;border-radius:5px;
+    font-size:9.5px;text-align:center;position:relative;
+    color:#222;font-weight:500;
+  }
+  .rec-pill.reduce{background:#fdf3e2;border-color:#f5d8a8}
+  .rec-pill .count{
+    position:absolute;top:50%;left:4px;transform:translateY(-50%);
+    width:14px;height:14px;background:#27AE60;color:#fff;
+    border-radius:3px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .rec-pill.reduce .count{background:#E67E22}
+
+  /* responsive: keep readable on narrow viewports */
+  @media (max-width: 900px){
+    .page{transform-origin:top center;}
+    .topnav-inner{padding:10px 14px}
+    .tabs button{padding:8px 14px;font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     STICKY TOP NAV
+============================================================ -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <span class="lhs">jen</span><span class="slash">/</span><span class="rhs">health</span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button data-tab="gut" class="active" role="tab" aria-selected="true">Gut Health</button>
+      <button data-tab="genetics" role="tab" aria-selected="false">Genetics</button>
+      <button data-tab="nutrition" role="tab" aria-selected="false">Nutrition</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     ============== GENETICS TAB (IntellxxDNA) ==================
+============================================================ -->
+<section id="tab-gut" class="tab-section">
+  <header class="section-banner">
+    <div class="kicker">Sample · 25 Jul 2025</div>
+    <h2>Gut Health</h2>
+    <div class="meta"><b>Biomesight Microbiome</b> <span class="dot">·</span> 16s rRNA sequencing of v4 region</div>
+    <div class="rule"></div>
+  </header>
+  <div id="bs-pages"></div>
+</section>
+
+<section id="tab-genetics" class="tab-section">
+  <header class="section-banner">
+    <div class="kicker">Genome · single test</div>
+    <h2>Genetics</h2>
+    <div class="meta"><b>IntellxxDNA</b> <span class="dot">·</span> Hot Spot Summary <span class="dot">·</span> 49 SNPs analyzed</div>
+    <div class="rule"></div>
+  </header>
+  <div id="ix-pages"></div>
+</section>
+
+
+<!-- ============================================================
+     ============== NUTRITION TAB (SpectraCell) =================
+============================================================ -->
+<section id="tab-nutrition" class="tab-section">
+
+  <header class="section-banner">
+    <div class="kicker">Reported · 11 Mar 2026</div>
+    <h2>Nutrition</h2>
+    <div class="meta"><b>SpectraCell Laboratories</b> <span class="dot">·</span> Micronutrient Profile <span class="dot">·</span> 31 functional analytes</div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- ============================================================ PAGE 1 - COVER ============================================================ -->
+  <div class="page sc cover">
+    <div class="big-logo">
+      <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+      <div class="logo-text">
+        <div class="name">SpectraCell</div>
+        <div class="name" style="font-size:20px;margin-top:-2px">Laboratories</div>
+        <div class="tag">Science  +  Health  +  Solutions</div>
+      </div>
+    </div>
+
+    <div class="network">
+      <svg viewBox="0 0 700 430" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        <g stroke="#5CA3B8" stroke-width=".5" fill="none" opacity=".7">
+          <line x1="80" y1="120" x2="180" y2="80"/><line x1="180" y1="80" x2="280" y2="60"/>
+          <line x1="280" y1="60" x2="380" y2="100"/><line x1="380" y1="100" x2="480" y2="80"/>
+          <line x1="480" y1="80" x2="600" y2="120"/><line x1="100" y1="200" x2="200" y2="170"/>
+          <line x1="200" y1="170" x2="320" y2="200"/><line x1="320" y1="200" x2="430" y2="180"/>
+          <line x1="430" y1="180" x2="540" y2="220"/><line x1="540" y1="220" x2="640" y2="200"/>
+          <line x1="120" y1="280" x2="240" y2="260"/><line x1="240" y1="260" x2="350" y2="290"/>
+          <line x1="350" y1="290" x2="460" y2="270"/><line x1="460" y1="270" x2="570" y2="300"/>
+          <line x1="60" y1="350" x2="180" y2="370"/><line x1="180" y1="370" x2="290" y2="350"/>
+          <line x1="290" y1="350" x2="400" y2="380"/><line x1="180" y1="80" x2="200" y2="170"/>
+          <line x1="280" y1="60" x2="320" y2="200"/><line x1="380" y1="100" x2="430" y2="180"/>
+          <line x1="200" y1="170" x2="240" y2="260"/><line x1="320" y1="200" x2="350" y2="290"/>
+          <line x1="430" y1="180" x2="460" y2="270"/><line x1="240" y1="260" x2="180" y2="370"/>
+          <line x1="350" y1="290" x2="290" y2="350"/><line x1="460" y1="270" x2="400" y2="380"/>
+        </g>
+        <g>
+          <circle cx="80" cy="120" r="6" fill="#5CA3B8"/><circle cx="180" cy="80" r="4" fill="#A6CE39"/>
+          <circle cx="280" cy="60" r="3" fill="#1E4C7E"/><circle cx="380" cy="100" r="7" fill="#A6CE39"/>
+          <circle cx="480" cy="80" r="3" fill="#5CA3B8"/><circle cx="600" cy="120" r="9" fill="#B0B0B0"/>
+          <circle cx="100" cy="200" r="9" fill="#5CA3B8"/><circle cx="200" cy="170" r="5" fill="#A6CE39"/>
+          <circle cx="320" cy="200" r="4" fill="#3D7CB0"/><circle cx="430" cy="180" r="5" fill="#5CA3B8"/>
+          <circle cx="540" cy="220" r="3" fill="#A6CE39"/><circle cx="640" cy="200" r="4" fill="#B0B0B0"/>
+          <circle cx="120" cy="280" r="11" fill="#B0B0B0"/><circle cx="240" cy="260" r="8" fill="#A6CE39"/>
+          <circle cx="350" cy="290" r="3" fill="#A6CE39"/><circle cx="460" cy="270" r="6" fill="#5CA3B8"/>
+          <circle cx="570" cy="300" r="3" fill="#5CA3B8"/><circle cx="60" cy="350" r="6" fill="#1E4C7E"/>
+          <circle cx="180" cy="370" r="4" fill="#5CA3B8"/><circle cx="290" cy="350" r="9" fill="#5CA3B8"/>
+          <circle cx="400" cy="380" r="3" fill="#1E4C7E"/>
+        </g>
+        <g stroke="#3D7CB0" stroke-width="1" fill="#CDE0EF">
+          <polygon points="100,170 145,170 167,210 145,250 100,250 78,210"/>
+          <polygon points="450,80 480,80 495,105 480,130 450,130 435,105"/>
+          <polygon points="335,260 360,260 372,280 360,300 335,300 323,280"/>
+        </g>
+        <g fill="#1E4C7E" font-family="Arial" font-weight="700" text-anchor="middle">
+          <text x="123" y="218" font-size="22">B12</text>
+          <text x="465" y="112" font-size="14">A</text>
+          <text x="348" y="287" font-size="14">Zn</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="micronutrient"><span class="micro">MICRO.</span><span class="nutr">NUTRIENT</span></div>
+    <div class="tagline"><em>Driven by Science.   Inspired by You.</em></div>
+
+    <div class="meta-block">
+      <div class="row">Patient: <strong>Pei Ru Hao, Jennifer</strong></div>
+      <div class="row">Accession ID: 2602200057</div>
+      <div class="row">Provider: Rupa Health</div>
+    </div>
+
+    <div class="notice">
+      <p>Due to technical difficulties, we were unable to obtain a valid test result for Magnesium. This report shows no result for this analyte. If you have any questions, please call Client Services at 800-227-5227.</p>
+      <p>The reported results were determined on a blood specimen received at SpectraCell Laboratories two days after collection. Test results are determined by the proliferative response of lymphocytes following mitogen stimulation. Optimal proliferation characteristics are generally associated with specimens received and tested within 24 hours of collection.</p>
+    </div>
+
+    <div class="order-status">Order Status: <span class="red">Complete</span></div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 2 - WELCOME ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">
+        6030 North Course Drive, Houston, TX 77072<br>
+        1(800) 227-5227 | support@spectracell.com | www.spectracell.com
+      </div>
+    </div>
+
+    <div class="center-strap">6030 North Course Drive, Houston, TX 77072 | 1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+
+    <div class="info-grid">
+      <div class="info-card patient">
+        <div class="head">PATIENT</div>
+        <div class="body">
+          <div class="field"><span class="lbl">Name</span><span class="val">Pei Ru Hao, Jennifer</span></div>
+          <div class="field"><span class="lbl">Age</span><span class="val">32</span></div>
+          <div class="field"><span class="lbl">DOB</span><span class="val">2/15/1994</span></div>
+          <div class="field"><span class="lbl">Gender</span><span class="val">Female</span></div>
+          <div class="field full"><span class="lbl">Patient ID</span><span class="val">26-051-00040</span></div>
+        </div>
+      </div>
+      <div class="info-card specimen">
+        <div class="head">SPECIMEN</div>
+        <div class="body">
+          <div class="field"><span class="lbl">Accession ID</span><span class="val">2602200057</span></div>
+          <div class="field"><span class="lbl">Date Collected</span><span class="val">02/18/2026</span></div>
+          <div class="field"><span class="lbl">Order ID</span><span class="val smaller">1056-00074349518-260220</span></div>
+          <div class="field"><span class="lbl">Date Received</span><span class="val">02/20/2026</span></div>
+          <div class="field"></div>
+          <div class="field"><span class="lbl">Date Reported</span><span class="val">03/11/2026</span></div>
+        </div>
+      </div>
+      <div class="info-card provider">
+        <div class="head">PROVIDER</div>
+        <div class="body">
+          <div class="field"><span class="lbl">Account ID</span><span class="val">74349518</span></div>
+          <div class="field"><span class="lbl">Client Name</span><span class="val">Rupa Health</span></div>
+          <div class="field full"><span class="lbl">Address</span><span class="val">177 Townsend St 528<br>San Francisco, CA 94107</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome-title">Welcome to your Micronutrient Profile, <em>Jennifer!</em></div>
+    <div class="rule"></div>
+    <div class="welcome-body">
+      Your body is unique and your story is too. Virtually all metabolic and developmental processes that take place in the body require micronutrients and strong evidence suggests that subtle vitamin, mineral, and antioxidant deficiencies can contribute to degenerative processes. These cellular deficiencies may suggest the underlying cause of a myriad of unwanted symptoms and, if corrected, can optimize physical and mental health performance.
+    </div>
+
+    <div class="advantage-title">The SpectraCell Advantage</div>
+    <div class="advantage-sub">Superior insights, earlier interventions, customized treatment plans.</div>
+    <div class="rule"></div>
+
+    <div class="advantage-grid">
+      <div class="col">
+        <h4>Functional</h4>
+        <div class="icon-circ gear">⚙</div>
+        <p>We measure the functional level and capability of nutrients present within your white blood cells, where metabolism takes place and where micronutrients do their job.</p>
+      </div>
+      <div class="col">
+        <h4>Long-term</h4>
+        <div class="icon-circ">⏱</div>
+        <p>This test measures intracellular micronutrient function over a period of 4-6 months, extending beyond static serum measurements.</p>
+      </div>
+      <div class="col">
+        <h4>Proprietary</h4>
+        <div class="icon-circ">🛡</div>
+        <p>Only SpectraCell offers the patented Spectrox® (reflects antioxidant capacity) and Immunidex (an overall measure of immune function).</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 2 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 3 - GLANCE ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="what-title">What we measure:</div>
+    <div class="rule"></div>
+    <div class="what-body">
+      We have measured the functional levels of 31 micronutrients, from vitamins and minerals to fatty acids and metabolites, as well as an overall measurement of antioxidant capacity and immune function to provide you with a powerful tool for optimal health, performance, and insight into any health condition. We provide your unique nutrient status in the following areas:
+    </div>
+
+    <div class="cat-grid">
+      <div class="cat"><div class="glyph">🔬</div><div><h5>VITAMINS &amp; MINERALS</h5><p>Discover your body's unique vitamin and mineral requirements and the disparities that exist within your makeup.</p></div></div>
+      <div class="cat"><div class="glyph">🧪</div><div><h5>AMINO ACIDS</h5><p>Learn how well your amino acids, the building block of protein, are functioning within your cells.</p></div></div>
+      <div class="cat"><div class="glyph">♥</div><div><h5>ENERGY, FAT AND METABOLISM</h5><p>Know how well your body is metabolizing micronutrients for energy production.</p></div></div>
+      <div class="cat"><div class="glyph">📈</div><div><h5>ANTIOXIDANT STATUS &amp; IMMUNE FUNCTION</h5><p>Understand your body's ability to manage oxidative stress and your immune response to infections and disease.</p></div></div>
+    </div>
+
+    <div class="glance-title">Results At-A-Glance</div>
+    <div class="rule"></div>
+
+    <div class="section-band">Functional Deficiencies</div>
+    <div class="col-headers"><div>Abnormal</div><div>Supplementation Information *</div><div>Provider Comments</div></div>
+    <div class="empty-row">NO FUNCTIONAL DEFICIENCIES</div>
+
+    <p class="footnote">* The RDA (Recommended Daily Allowance) was first published in 1968 primarily for use in nutritional labeling of packaged foods. The DRI (Dietary Reference Intake), published in 1997, serves as replacements for the former RDA, although the actual values are generally within an order of magnitude, and are also primarily for use in nutritional labeling and fortification of packaged foods. In most cases, neither the RDA nor the DRI will be adequate to replete a nutrient in people who demonstrate a functional cellular deficiency of said nutrient. An evidence based approach was used to develop clinically relevant repletion recommendations, consisting of data from published studies and clinician expertise. However, the information presented is not intended nor implied to be a substitute for professional medical advice, diagnosis or treatment.</p>
+    <p class="footnote" style="margin-top:6px">* Listed repletion information is for patients 12 and older. If the patient is under 12, please contact Spectracell Client Services for pediatric repletion information.</p>
+
+    <div class="section-band" style="margin-top:14px">Borderline Deficiencies</div>
+    <div class="col-headers" style="grid-template-columns:160px 1fr"><div>Borderline</div><div>Provider Comments</div></div>
+    <div class="borderline-list">
+      <div class="row"><div>Alpha Lipoic Acid</div><div></div></div>
+      <div class="row"><div>Glutamine</div><div></div></div>
+      <div class="row"><div>Glutathione</div><div></div></div>
+      <div class="row"><div>Inositol</div><div></div></div>
+      <div class="row"><div>Vitamin B1</div><div></div></div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 3 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 4 - SPECTROX & IMMUNIDEX ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="three-col">
+      <div>
+        <div class="col-title"><h3>Spectrox<sup>®</sup></h3><p>Total Antioxidant Function</p></div>
+        <div class="vert-bar-wrap">
+          <svg viewBox="0 0 80 220" width="100" height="240">
+            <rect x="30" y="132" width="30" height="88" fill="#B0B0B0"/>
+            <rect x="30" y="77"  width="30" height="55" fill="#F2E14C"/>
+            <rect x="30" y="0"   width="30" height="77" fill="#A6CE39"/>
+            <g font-family="Arial" font-size="9" fill="#4A4A4A" text-anchor="end">
+              <text x="26" y="223">0</text><text x="26" y="168">25</text><text x="26" y="113">50</text><text x="26" y="58">75</text><text x="26" y="8">100</text>
+            </g>
+            <circle cx="45" cy="73" r="9" fill="#fff" stroke="#7A7A7A"/>
+            <text x="45" y="76" font-family="Arial" font-size="9" font-weight="700" fill="#4A4A4A" text-anchor="middle">67</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="col-title"><h3>Immunidex</h3><p>Total Immune Function</p></div>
+        <div class="vert-bar-wrap">
+          <svg viewBox="0 0 80 220" width="100" height="240">
+            <rect x="30" y="132" width="30" height="88" fill="#B0B0B0"/>
+            <rect x="30" y="77"  width="30" height="55" fill="#F2E14C"/>
+            <rect x="30" y="0"   width="30" height="77" fill="#A6CE39"/>
+            <g font-family="Arial" font-size="9" fill="#4A4A4A" text-anchor="end">
+              <text x="26" y="223">0</text><text x="26" y="168">25</text><text x="26" y="113">50</text><text x="26" y="58">75</text><text x="26" y="8">100</text>
+            </g>
+            <circle cx="45" cy="68" r="9" fill="#fff" stroke="#7A7A7A"/>
+            <text x="45" y="71" font-family="Arial" font-size="9" font-weight="700" fill="#4A4A4A" text-anchor="middle">69</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="col-title" style="text-align:center"><h3>Total Immune Function vs Age</h3></div>
+        <svg viewBox="0 0 380 230" width="100%" height="230">
+          <g stroke="#E6E6E6" stroke-width=".5">
+            <line x1="40" y1="20" x2="370" y2="20"/><line x1="40" y1="60" x2="370" y2="60"/>
+            <line x1="40" y1="100" x2="370" y2="100"/><line x1="40" y1="140" x2="370" y2="140"/>
+            <line x1="40" y1="180" x2="370" y2="180"/>
+          </g>
+          <g font-family="Arial" font-size="9" fill="#4A4A4A" text-anchor="end">
+            <text x="36" y="184">35</text><text x="36" y="144">45</text><text x="36" y="104">55</text>
+            <text x="36" y="64">65</text><text x="36" y="24">75</text>
+          </g>
+          <g font-family="Arial" font-size="9" fill="#4A4A4A" text-anchor="middle">
+            <text x="60" y="200">10</text><text x="100" y="200">20</text><text x="140" y="200">30</text>
+            <text x="180" y="200">40</text><text x="220" y="200">50</text><text x="260" y="200">60</text>
+            <text x="300" y="200">70</text><text x="340" y="200">80</text>
+          </g>
+          <text x="200" y="220" font-family="Arial" font-style="italic" font-size="9" fill="#4A4A4A" text-anchor="middle">Age</text>
+          <text x="14" y="100" font-family="Arial" font-style="italic" font-size="9" fill="#4A4A4A" text-anchor="middle" transform="rotate(-90 14 100)">Total Immune Function</text>
+          <polyline fill="none" stroke="#8FB825" stroke-width="1.5" points="60,30 100,34 140,46 180,54 220,58 260,66 300,86 340,114 360,108"/>
+          <g fill="#fff" stroke="#8FB825" stroke-width="1">
+            <circle cx="60" cy="30" r="3"/><circle cx="100" cy="34" r="3"/><circle cx="180" cy="54" r="3"/>
+            <circle cx="220" cy="58" r="3"/><circle cx="260" cy="66" r="3"/><circle cx="300" cy="86" r="3"/>
+            <circle cx="340" cy="114" r="3"/><circle cx="360" cy="108" r="3"/>
+          </g>
+          <circle cx="148" cy="44" r="8" fill="#fff" stroke="#7A7A7A"/>
+          <text x="148" y="47" font-family="Arial" font-size="8" font-weight="700" fill="#4A4A4A" text-anchor="middle">69</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="legend-row">
+      <div class="leg"><div class="dot def"></div><div><b>Deficient</b>Values in this range indicate a poor growth response. Cell function is compromised and likely requires nutrient repletion.</div></div>
+      <div class="leg"><div class="dot avg"></div><div><b>Average</b>Values in this range indicate an average growth response. Cell function is not yet optimal and may require nutrient repletion.</div></div>
+      <div class="leg"><div class="dot str"></div><div><b>Strong</b>Values in the range indicate a stronger than average growth response. Cells are functioning well.</div></div>
+    </div>
+
+    <div class="detail-pair">
+      <div><h4>Spectrox<sup>®</sup></h4><p>Total Antioxidant Function is a measurement of overall antioxidant function. The patient's cells are oxidatively challenged and the cells' ability to resist damage is determined.</p></div>
+      <div><h4>Immunidex</h4><p>Total Immune Function is an indication of how well a person's T-lymphocytes are functioning by measuring their response to mitogen stimulation (ability to grow). Since lymphocyte function is widely considered a systemic measure of general health, a healthy (stronger) response is desired. A less-than-optimal response may improve with nutrient repletion.</p></div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 4 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 5 - DETAIL TABLE ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="table-head">
+      <div>Micronutrients</div><div>Patient Results</div><div>Reference<span class="stk">Range</span></div><div>Patient<span class="stk">Result</span></div><div>Interpretation</div>
+    </div>
+
+    <div id="microtable"></div>
+
+    <div class="table-note">The reference ranges listed in the above table are valid for male and female patients 12 years of age or older.</div>
+
+    <div class="legend-bottom">
+      <div class="leg"><div class="dot def"></div><div><b>Deficient</b>Values in this area represent a deficiency and may require nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot avg"></div><div><b>Borderline</b>Values in this area represent a borderline deficiency and may indicate a need for nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot str"></div><div><b>Normal</b>Values in this area represent a normal result</div></div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 5 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 6 - VERTICAL BARS ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="legend-mini">
+      <div class="leg"><div class="dot def"></div><div><b>Deficient</b>Values in this area represent a deficiency and may require nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot avg"></div><div><b>Borderline</b>Values in this area represent a borderline deficiency and may indicate a need for nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot str"></div><div><b>Normal</b>Values in this area represent a normal result</div></div>
+    </div>
+
+    <div class="barchart-section first"><h3>B-Complex Vitamins</h3><div class="bar-grid eight" id="bvit"></div></div>
+    <div class="barchart-section"><h3>Amino Acids &amp; Metabolites</h3><div class="bar-grid seven" id="amino"></div></div>
+    <div class="barchart-section"><h3>Other Vitamins &amp; Minerals</h3><div class="bar-grid eight" id="ovm"></div></div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 6 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 7 - ANTIOXIDANTS ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="legend-mini">
+      <div class="leg"><div class="dot def"></div><div><b>Deficient</b>Values in this area represent a deficiency and may require nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot avg"></div><div><b>Borderline</b>Values in this area represent a borderline deficiency and may indicate a need for nutrient repletion or dietary changes</div></div>
+      <div class="leg"><div class="dot str"></div><div><b>Normal</b>Values in this area represent a normal result</div></div>
+    </div>
+
+    <div class="barchart-section first"><h3>Individual Antioxidants</h3><div class="bar-grid seven" id="antiox"></div></div>
+
+    <div class="barchart-section">
+      <h3>Carbohydrate Metabolism</h3>
+      <div class="carb-row">
+        <div id="fruct"></div>
+        <div class="desc"><h4>Fructose Sensitivity</h4><p>This assay measures changes in the patient's lymphocyte growth response to a fructose challenge. Significant reduction in cell growth capacity is indicative of poor ability to metabolize fructose. This can be due to nutritional deficiencies of necessary cofactors in the fructose metabolizing pathway (e.g. copper, zinc) or may be due to genetic factors.</p></div>
+        <div id="gluc"></div>
+        <div class="desc"><h4>Glucose-Insulin Interaction</h4><p>The patient's cells are challenged with glucose and their ability to grow in the presence or absence of insulin is determined. A significant decrease of cell growth is indicative of reduced ability to metabolize glucose.</p></div>
+        <div id="chrom"></div>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div><h4>Spectrox<sup>®</sup> - Total Antioxidant Function</h4><p class="blurb">Total Antioxidant Function is a measurement of overall antioxidant function. The patient's cells are oxidatively challenged and the cells' ability to resist damage is determined.</p></div>
+      <div>
+        <svg viewBox="0 0 60 180" width="60" height="180">
+          <rect x="15" y="108" width="30" height="72" fill="#B0B0B0"/><rect x="15" y="63" width="30" height="45" fill="#F2E14C"/><rect x="15" y="0" width="30" height="63" fill="#A6CE39"/>
+          <g font-family="Arial" font-size="8" fill="#4A4A4A" text-anchor="end"><text x="13" y="183">0</text><text x="13" y="138">25</text><text x="13" y="93">50</text><text x="13" y="48">75</text><text x="13" y="8">100</text></g>
+          <circle cx="30" cy="60" r="8" fill="#fff" stroke="#7A7A7A"/><text x="30" y="63" font-family="Arial" font-size="8" font-weight="700" fill="#4A4A4A" text-anchor="middle">67</text>
+        </svg>
+      </div>
+      <div class="key">
+        <b>Total Antioxidant Function value above 65%</b><span>indicates a desirable status. Since antioxidants are protective nutrients, higher antioxidant function is desirable because it increase cells' ability to resist oxidative stress.</span>
+        <b>Total Antioxidant Function value between 40%-65%</b><span>indicates an average ability to resist oxidative stress.</span>
+        <b>Total Antioxidant Function value below 40%</b><span>indicates poor antioxidant function resulting in reduced ability to resist oxidative stress.</span>
+      </div>
+    </div>
+
+    <div class="summary-block" style="border-top:none;padding-top:0;margin-top:14px">
+      <div><h4>Immunidex - Total Immune Function</h4><p class="blurb">Total Immune Function is an indication of how well a person's T-lymphocytes are functioning by measuring their response to mitogen stimulation (ability to grow). Since lymphocyte function is widely considered a systemic measure of general health, a healthy (stronger) response is desired. A less-than-optimal response may improve with nutrient repletion.</p></div>
+      <div>
+        <svg viewBox="0 0 60 180" width="60" height="180">
+          <rect x="15" y="108" width="30" height="72" fill="#B0B0B0"/><rect x="15" y="63" width="30" height="45" fill="#F2E14C"/><rect x="15" y="0" width="30" height="63" fill="#A6CE39"/>
+          <g font-family="Arial" font-size="8" fill="#4A4A4A" text-anchor="end"><text x="13" y="183">0</text><text x="13" y="138">25</text><text x="13" y="93">50</text><text x="13" y="48">75</text><text x="13" y="8">100</text></g>
+          <circle cx="30" cy="56" r="8" fill="#fff" stroke="#7A7A7A"/><text x="30" y="59" font-family="Arial" font-size="8" font-weight="700" fill="#4A4A4A" text-anchor="middle">69</text>
+        </svg>
+      </div>
+      <div class="key">
+        <b>Total Immune Function value above 65%</b><span>indicates a strong (healthy) cell-mediated immune response.</span>
+        <b>Total Immune Function value between 40% and 65%</b><span>indicates an average response.</span>
+        <b>Total Immune Function value below 40%</b><span>may indicate a weakened cell-mediated immune response.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Result Page 7 of 10</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 8 - METHODOLOGY ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="method-title">
+      <h2>Overview of <strong>Test Methodology</strong></h2>
+      <div class="grn">Cellular Function = Performance, Not Just Potential</div>
+      <div class="lpa">Lymphocyte Proliferation Assay</div>
+    </div>
+
+    <div class="stage">
+      <div class="icon"><svg viewBox="0 0 50 50" fill="currentColor"><rect x="14" y="6" width="6" height="36" rx="1"/><rect x="30" y="6" width="6" height="36" rx="1"/><circle cx="17" cy="32" r="2"/><circle cx="33" cy="36" r="2"/><circle cx="17" cy="38" r="1.5"/></svg></div>
+      <div class="step-block"><span class="num">1</span><span class="dotline"></span><div class="text"><h5>ISOLATION</h5><p>Lymphocytes are purified, washed, counted, and plated.</p></div></div>
+    </div>
+    <div class="stage alt">
+      <div class="step-block"><div class="text"><h5>INCUBATION</h5><p>Cells are incubated for 5 days in a defined culture medium containing optimal levels of all essential nutrients necessary to sustain their growth.</p></div><span class="dotline"></span><span class="num">2</span></div>
+      <div class="icon"><svg viewBox="0 0 50 50" fill="currentColor"><rect x="10" y="10" width="30" height="30" rx="2"/><rect x="14" y="14" width="22" height="2" fill="#A6CE39"/></svg></div>
+    </div>
+    <div class="stage">
+      <div class="icon"><svg viewBox="0 0 50 50" fill="currentColor">
+        <g><circle cx="14" cy="16" r="1.5"/><circle cx="20" cy="16" r="1.5"/><circle cx="26" cy="16" r="1.5"/><circle cx="32" cy="16" r="1.5"/></g>
+        <g><circle cx="14" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/><circle cx="26" cy="22" r="1.5"/><circle cx="32" cy="22" r="1.5"/></g>
+        <g><circle cx="14" cy="28" r="1.5"/><circle cx="20" cy="28" r="1.5"/><circle cx="26" cy="28" r="1.5"/><circle cx="32" cy="28" r="1.5"/></g>
+        <g><circle cx="14" cy="34" r="1.5"/><circle cx="20" cy="34" r="1.5"/><circle cx="26" cy="34" r="1.5"/><circle cx="32" cy="34" r="1.5"/></g>
+      </svg></div>
+      <div class="step-block"><span class="num">3</span><span class="dotline"></span><div class="text"><h5>LABELING</h5><p>The mitogen stimulated cells' growth are measured by the incorporation of radioactive thymidine.</p></div></div>
+    </div>
+    <div class="stage alt">
+      <div class="step-block"><div class="text"><h5>HARVEST &amp; COUNTING</h5><p>Cells are harvested onto filter paper and counted.</p></div><span class="dotline"></span><span class="num">4</span></div>
+      <div class="icon"><svg viewBox="0 0 50 50" fill="currentColor"><rect x="8" y="14" width="34" height="22" rx="2"/><rect x="20" y="36" width="10" height="6"/><rect x="14" y="42" width="22" height="2"/></svg></div>
+    </div>
+    <div class="stage">
+      <div class="icon"><svg viewBox="0 0 50 50" fill="currentColor"><circle cx="18" cy="18" r="5"/><path d="M10 40 q8 -10 16 0"/><rect x="28" y="20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M30 24 l4 4 l6 -6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
+      <div class="step-block"><span class="num">5</span><span class="dotline"></span><div class="text"><h5>DATA PROCESSING</h5><p>Data is reviewed, approved, and released to reporting.</p></div></div>
+    </div>
+
+    <div class="turnaround">Routine turnaround time for the Micronutrient assay is 10-14 business days.</div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Supplemental Page 1 of 3</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 9 - KREBS CYCLE ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="diagram-title"><h2>Krebs Cycle</h2><div class="grn">Energy Production</div></div>
+
+    <svg viewBox="0 0 700 750" width="100%" style="max-height:560px">
+      <g font-family="Arial" font-weight="700">
+        <rect x="300" y="20" width="120" height="34" fill="#fff" stroke="#000"/><text x="360" y="42" font-size="14" text-anchor="middle">Carbohydrates</text>
+        <rect x="80" y="80" width="80" height="34" fill="#fff" stroke="#000"/><text x="120" y="102" font-size="14" text-anchor="middle">Fats</text>
+        <rect x="560" y="80" width="80" height="34" fill="#fff" stroke="#000"/><text x="600" y="102" font-size="14" text-anchor="middle">Proteins</text>
+        <rect x="305" y="160" width="110" height="34" fill="#fff" stroke="#000"/><text x="360" y="182" font-size="14" text-anchor="middle">Acetyl CoA</text>
+      </g>
+      <text x="360" y="138" font-family="Arial" font-weight="700" font-size="12" fill="#4A4A4A" text-anchor="middle">Pyruvate</text>
+      <g stroke="#1E4C7E" stroke-width="2.5" fill="none">
+        <path d="M360 54 L360 126"/><path d="M360 142 L360 158" marker-end="url(#tri)"/>
+        <path d="M160 100 Q260 130 305 170" marker-end="url(#tri)"/>
+        <path d="M560 100 Q460 130 415 170" marker-end="url(#tri)"/>
+        <path d="M360 196 L360 248" marker-end="url(#tri)"/>
+      </g>
+      <defs><marker id="tri" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#1E4C7E"/></marker></defs>
+      <circle cx="360" cy="490" r="135" fill="none" stroke="#1E4C7E" stroke-width="14"/>
+      <text x="360" y="495" font-family="Arial" font-weight="700" font-size="20" fill="#000" text-anchor="middle">Citric Acid Cycle</text>
+      <g font-family="Arial" font-size="12" fill="#000">
+        <text x="220" y="350" text-anchor="middle">Oxaloacetate</text><text x="490" y="350" text-anchor="middle">Citrate</text>
+        <text x="540" y="430" text-anchor="middle">cis-Aconitate</text><text x="555" y="540" text-anchor="middle">Isocitrate</text>
+        <text x="540" y="610" text-anchor="middle">α-Ketoglutarate</text><text x="360" y="660" text-anchor="middle">Succinyl-CoA</text>
+        <text x="180" y="610" text-anchor="middle">Succinate</text><text x="170" y="540" text-anchor="middle">Fumarate</text>
+        <text x="180" y="430" text-anchor="middle">Malate</text>
+      </g>
+      <g font-family="Arial" font-weight="700" text-anchor="middle">
+        <circle cx="220" cy="190" r="13" fill="#A6CE39"/><text x="220" y="194" font-size="11">E</text>
+        <circle cx="155" cy="240" r="13" fill="#A6CE39"/><text x="155" y="244" font-size="10">Car</text>
+        <circle cx="245" cy="220" r="13" fill="#F2E14C"/><text x="245" y="224" font-size="10">ALA</text>
+        <circle cx="275" cy="220" r="13" fill="#F2E14C"/><text x="275" y="224" font-size="11">B1</text>
+        <circle cx="305" cy="220" r="13" fill="#A6CE39"/><text x="305" y="224" font-size="11">B2</text>
+        <circle cx="338" cy="220" r="13" fill="#A6CE39"/><text x="338" y="224" font-size="11">Ca</text>
+        <circle cx="375" cy="220" r="13" fill="#A6CE39"/><text x="375" y="224" font-size="11">B5</text>
+        <circle cx="408" cy="220" r="13" fill="#A6CE39"/><text x="408" y="224" font-size="11">Zn</text>
+        <circle cx="441" cy="220" r="13" fill="#A6CE39"/><text x="441" y="224" font-size="11">B6</text>
+        <circle cx="500" cy="220" r="13" fill="#A6CE39"/><text x="500" y="224" font-size="11">B7</text>
+        <circle cx="535" cy="240" r="13" fill="#A6CE39"/><text x="535" y="244" font-size="10">Asn</text>
+        <circle cx="285" cy="248" r="13" fill="#A6CE39"/><text x="285" y="252" font-size="10">Ser</text>
+        <circle cx="320" cy="248" r="13" fill="#A6CE39"/><text x="320" y="252" font-size="11">Se</text>
+        <circle cx="358" cy="252" r="13" fill="#F2E14C"/><text x="358" y="256" font-size="10">Gln</text>
+        <circle cx="395" cy="74" r="13" fill="#A6CE39"/><text x="395" y="78" font-size="11">A</text>
+        <circle cx="498" cy="395" r="13" fill="#F2E14C"/><text x="498" y="399" font-size="10">GSH</text>
+        <circle cx="540" cy="455" r="13" fill="#A6CE39"/><text x="540" y="459" font-size="11">Cu</text>
+        <circle cx="568" cy="455" r="13" fill="#A6CE39"/><text x="568" y="459" font-size="11">C</text>
+        <circle cx="540" cy="488" r="13" fill="#A6CE39"/><text x="540" y="492" font-size="11">B9</text>
+        <circle cx="568" cy="488" r="13" fill="#A6CE39"/><text x="568" y="492" font-size="10">Cys</text>
+        <circle cx="290" cy="450" r="13" fill="#A6CE39"/><text x="290" y="454" font-size="11">B12</text>
+        <circle cx="335" cy="540" r="13" fill="#A6CE39"/><text x="335" y="544" font-size="10">Q10</text>
+        <circle cx="395" cy="535" r="13" fill="#D13D2F"/><text x="395" y="539" font-size="11" fill="#fff">Mg</text>
+        <circle cx="425" cy="565" r="13" fill="#A6CE39"/><text x="425" y="569" font-size="11">Mn</text>
+        <circle cx="335" cy="610" r="13" fill="#A6CE39"/><text x="335" y="614" font-size="11">B12</text>
+        <circle cx="200" cy="395" r="13" fill="#A6CE39"/><text x="200" y="399" font-size="11">B3</text>
+        <circle cx="478" cy="660" r="13" fill="#F2E14C"/><text x="478" y="664" font-size="10">ALA</text>
+        <circle cx="510" cy="660" r="13" fill="#A6CE39"/><text x="510" y="664" font-size="11">Zn</text>
+        <circle cx="540" cy="660" r="13" fill="#F2E14C"/><text x="540" y="664" font-size="11">B1</text>
+        <circle cx="500" cy="690" r="13" fill="#A6CE39"/><text x="500" y="694" font-size="11">B2</text>
+        <circle cx="468" cy="700" r="13" fill="#A6CE39"/><text x="468" y="704" font-size="11">Zn</text>
+      </g>
+      <rect x="305" y="700" width="110" height="36" fill="#fff" stroke="#000"/>
+      <text x="360" y="722" font-family="Arial" font-weight="700" font-size="14" text-anchor="middle">ATP</text>
+      <text x="360" y="744" font-family="Arial" font-style="italic" font-size="9" fill="#4A4A4A" text-anchor="middle">(Cellular Energy)</text>
+      <path d="M360 626 L360 696" stroke="#1E4C7E" stroke-width="2.5" marker-end="url(#tri)"/>
+    </svg>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;align-items:flex-start">
+      <div class="abbr-key">
+        <div class="ttl">ABBREVIATION KEY</div>
+        <div class="grid">
+          <div>A = Vitamin A</div><div>Cu = Copper</div>
+          <div>C = Vitamin C</div><div>Mg = Magnesium</div>
+          <div>E = Vitamin E</div><div>Mn = Manganese</div>
+          <div>ALA = Lipoic Acid</div><div>Se = Selenium</div>
+          <div>B1 = Thiamine</div><div>Zn = Zinc</div>
+          <div>B2 = Riboflavin</div><div>GSH = Glutathione</div>
+          <div>B3 = Niacin</div><div>Cys = Cysteine</div>
+          <div>B5 = Pantothenate</div><div>Cho = Choline</div>
+          <div>B6 = Pyridoxine</div><div>Ser = Serine</div>
+          <div>B7 = Biotin</div><div>Car = Carnitine</div>
+          <div>B9 = Folate</div><div>Asn = Asparagine</div>
+          <div>B12 = Cobalamin</div><div>Gln = Glutamine</div>
+          <div>Ca = Calcium</div><div>Q10 = Coenzyme Q10</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end">
+        <div class="key-box">
+          <div class="head">Patient Results Key</div>
+          <div class="row"><span class="dot" style="background:#A6CE39"></span><span>Normal</span></div>
+          <div class="row"><span class="dot" style="background:#F2E14C"></span><span>Borderline</span></div>
+          <div class="row"><span class="dot" style="background:#D13D2F"></span><span>Deficient</span></div>
+          <div class="row"><span class="dot" style="background:#B0B0B0"></span><span>Not Reported</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Supplemental Page 2 of 3</div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================ PAGE 10 - METHYLATION CYCLE ============================================================ -->
+  <div class="page sc">
+    <div class="page-header">
+      <div class="logo">
+        <div class="logo-tiles"><span></span><span></span><span></span><span></span></div>
+        <div class="logo-text">
+          <div class="name">SpectraCell</div>
+          <div class="name" style="font-size:16px;margin-top:-2px">Laboratories</div>
+          <div class="tag">Science  +  Health  +  Solutions</div>
+        </div>
+      </div>
+      <div class="contact">6030 North Course Drive, Houston, TX 77072<br>1(800) 227-5227 | support@spectracell.com | www.spectracell.com</div>
+    </div>
+
+    <div class="patient-strip">
+      <span><span class="lbl">PATIENT:</span><span class="val">Pei Ru Hao, Jennifer</span></span>
+      <span><span class="lbl">PROVIDER:</span><span class="val">Rupa Health</span></span>
+      <span><span class="lbl">DATE REPORTED:</span><span class="val">03/11/2026</span></span>
+      <span><span class="lbl">ACCESSION ID:</span><span class="val">2602200057</span></span>
+    </div>
+
+    <div class="diagram-title"><h2>Methylation Cycle</h2><div class="grn">Detoxification, Cellular Adaptability, Gene Regulation</div></div>
+
+    <svg viewBox="0 0 750 600" width="100%" style="max-height:540px">
+      <g font-family="Arial" font-weight="700">
+        <rect x="40" y="40" width="100" height="22" fill="#fff" stroke="#000"/><text x="90" y="56" font-size="11" text-anchor="middle">Tryptophan</text>
+        <rect x="40" y="68" width="100" height="22" fill="#fff" stroke="#000"/><text x="90" y="84" font-size="11" text-anchor="middle">Tyrosine</text>
+        <rect x="180" y="50" width="155" height="22" fill="#fff" stroke="#000"/><text x="257" y="66" font-size="10" text-anchor="middle">Tetrahydrobiopterin(BH4)</text>
+        <rect x="345" y="50" width="135" height="22" fill="#fff" stroke="#000"/><text x="412" y="66" font-size="10" text-anchor="middle">Tetrahydrofolate(THF)</text>
+        <rect x="555" y="50" width="100" height="22" fill="#fff" stroke="#000"/><text x="605" y="66" font-size="11" text-anchor="middle">Methionine</text>
+      </g>
+      <circle cx="195" cy="245" r="80" fill="none" stroke="#5CA3B8" stroke-width="10"/>
+      <circle cx="395" cy="245" r="80" fill="none" stroke="#1E4C7E" stroke-width="10"/>
+      <circle cx="600" cy="245" r="80" fill="none" stroke="#1E4C7E" stroke-width="10"/>
+      <g font-family="Arial" font-weight="700" text-anchor="middle">
+        <text x="195" y="240" font-size="11" fill="#1E4C7E">NEUROTRANSMITTER</text><text x="195" y="254" font-size="11" fill="#1E4C7E">SYNTHESIS</text>
+        <text x="395" y="245" font-size="13" fill="#1E4C7E">FOLATE</text><text x="395" y="263" font-size="13" fill="#1E4C7E">CYCLE</text>
+        <text x="600" y="240" font-size="12" fill="#1E4C7E">METHIONINE</text><text x="600" y="256" font-size="12" fill="#1E4C7E">CYCLE</text>
+      </g>
+      <rect x="345" y="160" width="100" height="20" fill="#fff" stroke="#000"/><text x="395" y="174" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">5,10 Methylene-THF</text>
+      <rect x="225" y="270" width="100" height="20" fill="#fff" stroke="#000"/><text x="275" y="284" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">5- Formyl-THF</text>
+      <text x="275" y="305" font-family="Arial" font-size="9" text-anchor="middle">(folinic acid)</text>
+      <rect x="345" y="320" width="100" height="20" fill="#fff" stroke="#000"/><text x="395" y="334" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">5-Methy- THF</text>
+      <text x="395" y="354" font-family="Arial" font-size="9" text-anchor="middle">(L-Methylfolate)</text>
+      <rect x="540" y="200" width="125" height="20" fill="#fff" stroke="#000"/><text x="602" y="214" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">S-Adenosylmethionine</text>
+      <text x="602" y="232" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">(SAM)</text>
+      <rect x="540" y="270" width="135" height="20" fill="#fff" stroke="#000"/><text x="608" y="284" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">S-Adenosylhomocysteine</text>
+      <text x="608" y="302" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">(SAH)</text>
+      <rect x="40" y="370" width="80" height="22" fill="#fff" stroke="#000"/><text x="80" y="386" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Serotonin</text>
+      <path d="M120 60 Q60 250 80 365" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <rect x="40" y="490" width="80" height="22" fill="#fff" stroke="#000"/><text x="80" y="506" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Dopamine</text>
+      <path d="M80 392 L80 488" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <rect x="135" y="370" width="120" height="22" fill="#fff" stroke="#000"/><text x="195" y="386" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Dihydrobiopterin</text>
+      <text x="195" y="406" font-family="Arial" font-size="9" text-anchor="middle">(BH2)</text>
+      <rect x="555" y="370" width="100" height="22" fill="#fff" stroke="#000"/><text x="605" y="386" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Homocysteine</text>
+      <path d="M605 290 L605 368" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <text x="365" y="446" font-family="Arial" font-weight="700" font-size="11" fill="#000" text-anchor="middle">TRANSSULFURATION</text>
+      <rect x="555" y="430" width="100" height="22" fill="#fff" stroke="#000"/><text x="605" y="446" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Cystathionine</text>
+      <path d="M605 392 L605 428" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <rect x="635" y="490" width="105" height="22" fill="#fff" stroke="#000"/><text x="687" y="506" font-family="Arial" font-weight="700" font-size="9" text-anchor="middle">+ α-ketobutyrate</text>
+      <rect x="445" y="490" width="80" height="22" fill="#fff" stroke="#000"/><text x="485" y="506" font-family="Arial" font-weight="700" font-size="10" text-anchor="middle">Taurine</text>
+      <rect x="555" y="556" width="60" height="22" fill="#fff" stroke="#000"/><text x="585" y="572" font-family="Arial" font-weight="700" font-size="11" text-anchor="middle">GSH</text>
+      <path d="M605 452 L520 488" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <path d="M605 452 L685 488" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <path d="M605 452 L585 554" stroke="#1E4C7E" stroke-width="2" fill="none" marker-end="url(#tri2)"/>
+      <defs><marker id="tri2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#1E4C7E"/></marker></defs>
+      <g font-family="Arial" font-weight="700" text-anchor="middle">
+        <circle cx="160" cy="170" r="10" fill="#A6CE39"/><text x="160" y="174" font-size="9">B6</text>
+        <circle cx="195" cy="155" r="10" fill="#A6CE39"/><text x="195" y="159" font-size="9">B3</text>
+        <circle cx="225" cy="200" r="10" fill="#A6CE39"/><text x="225" y="204" font-size="9">B6</text>
+        <circle cx="115" cy="280" r="10" fill="#A6CE39"/><text x="115" y="284" font-size="9">Cu</text>
+        <circle cx="195" cy="345" r="10" fill="#A6CE39"/><text x="195" y="349" font-size="9">B2</text>
+        <circle cx="160" cy="445" r="10" fill="#A6CE39"/><text x="160" y="449" font-size="9">C</text>
+        <circle cx="365" cy="195" r="10" fill="#A6CE39"/><text x="365" y="199" font-size="9">B6</text>
+        <circle cx="395" cy="180" r="10" fill="#A6CE39"/><text x="395" y="184" font-size="9">Ser</text>
+        <circle cx="490" cy="220" r="10" fill="#A6CE39"/><text x="490" y="224" font-size="9">Se</text>
+        <circle cx="395" cy="245" r="10" fill="#D13D2F"/><text x="395" y="249" font-size="9" fill="#fff">Mg</text>
+        <circle cx="490" cy="270" r="10" fill="#A6CE39"/><text x="490" y="274" font-size="9">B9</text>
+        <circle cx="370" cy="340" r="10" fill="#A6CE39"/><text x="370" y="344" font-size="9">B6</text>
+        <circle cx="425" cy="340" r="10" fill="#A6CE39"/><text x="425" y="344" font-size="9">B3</text>
+        <circle cx="555" cy="160" r="10" fill="#A6CE39"/><text x="555" y="164" font-size="9">Se</text>
+        <circle cx="595" cy="148" r="10" fill="#A6CE39"/><text x="595" y="152" font-size="9">Zn</text>
+        <circle cx="640" cy="160" r="10" fill="#D13D2F"/><text x="640" y="164" font-size="9" fill="#fff">Mg</text>
+        <circle cx="660" cy="190" r="10" fill="#A6CE39"/><text x="660" y="194" font-size="9">Cho</text>
+        <circle cx="528" cy="245" r="10" fill="#A6CE39"/><text x="528" y="249" font-size="9">B12</text>
+        <circle cx="675" cy="295" r="10" fill="#A6CE39"/><text x="675" y="299" font-size="9">Cu</text>
+        <circle cx="555" cy="412" r="10" fill="#A6CE39"/><text x="555" y="416" font-size="9">B6</text>
+        <circle cx="585" cy="412" r="10" fill="#A6CE39"/><text x="585" y="416" font-size="9">Ser</text>
+        <circle cx="555" cy="475" r="10" fill="#A6CE39"/><text x="555" y="479" font-size="9">B6</text>
+        <circle cx="525" cy="535" r="10" fill="#A6CE39"/><text x="525" y="539" font-size="9">Cys</text>
+        <circle cx="495" cy="535" r="10" fill="#A6CE39"/><text x="495" y="539" font-size="9">B6</text>
+        <circle cx="685" cy="540" r="10" fill="#D13D2F"/><text x="685" y="544" font-size="9" fill="#fff">Mg</text>
+      </g>
+    </svg>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px;align-items:flex-start">
+      <div class="abbr-key">
+        <div class="ttl">ABBREVIATION KEY</div>
+        <div class="grid">
+          <div>A = Vitamin A</div><div>Cu = Copper</div>
+          <div>C = Vitamin C</div><div>Mg = Magnesium</div>
+          <div>E = Vitamin E</div><div>Mn = Manganese</div>
+          <div>ALA = Lipoic Acid</div><div>Se = Selenium</div>
+          <div>B1 = Thiamine</div><div>Zn = Zinc</div>
+          <div>B2 = Riboflavin</div><div>GSH = Glutathione</div>
+          <div>B3 = Niacin</div><div>Cys = Cysteine</div>
+          <div>B5 = Pantothenate</div><div>Cho = Choline</div>
+          <div>B6 = Pyridoxine</div><div>Ser = Serine</div>
+          <div>B7 = Biotin</div><div>Car = Carnitine</div>
+          <div>B9 = Folate</div><div>Asn = Asparagine</div>
+          <div>B12 = Cobalamin</div><div>Gln = Glutamine</div>
+          <div>Ca = Calcium</div><div>Q10 = Coenzyme Q10</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end">
+        <div class="key-box">
+          <div class="head">Patient Results Key</div>
+          <div class="row"><span class="dot" style="background:#A6CE39"></span><span>Normal</span></div>
+          <div class="row"><span class="dot" style="background:#F2E14C"></span><span>Borderline</span></div>
+          <div class="row"><span class="dot" style="background:#D13D2F"></span><span>Deficient</span></div>
+          <div class="row"><span class="dot" style="background:#B0B0B0"></span><span>Not Reported</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SpectraCell Laboratories, Inc.</span>
+      <span>Laboratory Director: Jonathan Stein, Ph.D.</span>
+      <span>CLIA#45D0710715</span>
+      <div class="pn">Supplemental Page 3 of 3</div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<script>
+/* ====================================================
+   Tabs scroll to section + active state follows scroll
+==================================================== */
+const tabBtns = document.querySelectorAll('.tabs button');
+const sections = ['gut','genetics','nutrition'].map(id => document.getElementById('tab-'+id));
+
+tabBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = document.getElementById('tab-' + btn.dataset.tab);
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+function setActive(id){
+  tabBtns.forEach(b=>{
+    const on = ('tab-'+b.dataset.tab) === id;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on ? 'true':'false');
+  });
+}
+
+// IntersectionObserver: whichever section is most in view drives the active tab
+const io = new IntersectionObserver((entries)=>{
+  const visible = entries
+    .filter(e=>e.isIntersecting)
+    .sort((a,b)=>b.intersectionRatio - a.intersectionRatio);
+  if(visible.length) setActive(visible[0].target.id);
+},{
+  rootMargin:'-80px 0px -50% 0px',
+  threshold:[0, .25, .5, .75, 1]
+});
+sections.forEach(s => s && io.observe(s));
+
+/* ====================================================
+   Render IntellxxDNA pages
+==================================================== */
+const SNPS = [
+  {gene:"CYP1A2", allele:"A", result:"AA", prev:"0.5%", variant:"2", color:"red", panel:"Neurobehavioral Research",
+   title:"Cytochrome P450 Family 1 Subfamily A Member 2", effect:"low melatonin",
+   desc:"Children with this SNP are generally low in melatonin. However, the effects are due to a combination of this SNP and another gene variant that is co-inherited 80% of the time. In most cases, these children respond well to melatonin initially but over time have to \"take a break\" in order to maintain efficacy."},
+  {gene:"ALDH2", allele:"A", result:"GA", prev:"0.7%", variant:"1", color:"red", panel:"Environmental Toxins (Benzene)",
+   title:"Aldehyde Dehydrogenase 2", effect:"alcohol",
+   desc:"Individuals with this SNP have decreased ability to metabolize alcohol and are prone to a greater build-up of formaldehyde in the blood and brain. Higher levels of formaldehyde can impair memory and cognition."},
+  {gene:"CHDH", allele:"G", result:"GG", prev:"1.7%", variant:"2", color:"green", panel:"Choline",
+   title:"Choline Dehydrogenase", effect:"lower susceptibility to choline deficiency",
+   desc:"Individuals with this SNP are at lower risk for choline deficiency."},
+  {gene:"FUT2", allele:"T", result:"AT", prev:"1.7%", variant:"1", color:"green", panel:"Vitamin B12",
+   title:"Fucosyltransferase 2", effect:"decreased \"good\" gut bacteria; higher B12",
+   desc:"This SNP results in making less of a protein that is normally found on the surface of blood cells where many bacteria and viruses bind. Having 2 copies of this SNP can be beneficial in conferring protection against infections such as H. Pylori and norovirus, but is also associated with producing less \"good\" bacteria in the gut and higher risk of Crohn's disease. \"Good\" bacteria in the gut use up B12 for their own needs, so lower levels of these bacteria can result in higher levels of available B12."},
+  {gene:"ADH1B", allele:"T", result:"TT", prev:"1.7%", variant:"2", color:"red", panel:"Environmental Toxins (Benzene)",
+   title:"Alcohol Dehydrogenase 1B", effect:"alcohol",
+   desc:"Individuals with this SNP convert alcohol to a more toxic intermediate compound up to 80 times faster than individuals with no variants. As a result, individuals with this SNP are more likely to be alcohol intolerant, have impaired cognition, and may feel worse after drinking alcohol."},
+  {gene:"GABRB3", allele:"C", result:"CC", prev:"2.6%", variant:"2", color:"red", panel:"Neurobehavioral Research",
+   title:"Gamma-Aminobutyric Acid Type A Receptor Beta3 Subunit", effect:"lower GABA signaling",
+   desc:"GABA is a \"calming\" pathway. This is a GABA A receptor subunit gene. One of the most significant of the GABA receptor regions associated with Autism. The GABRB3 subunit variants have been associated with \"insistence on sameness\". NOTE: In young children with ASD, it is also possible that their brains have not yet switched from GABA being an excitatory brain chemical to a calming or inhibitory one."},
+  {gene:"OPRMI", allele:"G", result:"GG", prev:"2.8%", variant:"2", color:"red", panel:"Addiction and Substance Use Disorder",
+   title:"Opioid Receptor Mu 1", effect:"Opioid sensitivity; General Addiction, Alcohol/Opioid/Methamphetamine Addiction",
+   desc:"This SNP can relate to increased doses of the abused drug over time, resulting in more long-term changes in the reward response/neural pathways to drugs and alcohol. It also relates to better addiction treatment responses to opioid receptor antagonists such as naltrexone."},
+  {gene:"GCH1", allele:"A", result:"AA", prev:"4%", variant:"2", color:"red", panel:"Attention and Focus", panelSecondary:"Depression",
+   title:"Guanosine Triphosphate Cyclohydrolase 1", effect:"lower norepinephrine and other neurotransmitters, NOS dysfunction",
+   desc:"This SNP relates to the production of a co-factor (helper molecule) called BH4 (tetrahydrobiopterin) that is necessary for making 3 important brain chemicals involved in attention and focus: norepinephrine, dopamine, and serotonin. Individuals with this SNP are prone to lower BH4 synthesis and lower amounts of norepinephrine and other brain chemicals."},
+  {gene:"NQO1", allele:"A", result:"AA", prev:"4.1%", variant:"2", color:"red", panel:"Environmental Toxins (Benzene)", flagged:true,
+   title:"NAD(P)H Quinone Dehydrogenase 1", effect:"lower ability to recycle CoQ10 and Vitamin E / detox issues",
+   desc:"Individuals with this SNP have impaired ability to get rid of toxins, particularly environmental toxins such as benzene, smoke and superoxide. This SNP also makes it difficult to recycle CoQ10 and vitamin E to their active forms. One copy reduces activity by 67% and two copies of this SNP lower enzymatic activity by 96-98%."},
+  {gene:"IL4", allele:"T", result:"TT", prev:"4.9%", variant:"2", color:"red", panel:"Mast Cell and IgE",
+   title:"Interleukin 4", effect:"increased mast cell activation and allergic response",
+   desc:"Interleukin 4 is one of the key cytokines (inflammatory molecule) produced by mast cells. IL4 then triggers the allergic cascade by promoting mast cell IL13 production. IL4 & IL-13 are the main inflammatory molecules that stimulate and maintain the allergic response. Il4 induces the differentiation of T cells to TH2 cells, which then produce more IL4 in a positive feedback loop."},
+  {gene:"ABO", allele:"T", result:"TT", prev:"5.1%", variant:"2", color:"red", panel:"Viral Induced Lung Inflammation and ARDS",
+   title:"ABO Blood Group", effect:"",
+   desc:"This SNP is associated with non-O blood types. Non-O blood types may be at higher risk of SARS-CoV-2 infections."},
+  {gene:"HLA-DQ4", allele:"G", result:"AG", prev:"5.7%", variant:"1", color:"red", panel:"Celiac",
+   title:"Human Leukocyte Antigen (DQ4)", effect:"gluten immune response",
+   desc:"This SNP offers protection against the HLA DQ2.2 risk SNP above and decreases the risk of gluten intolerance or celiac disease."},
+  {gene:"CNR1", allele:"C", result:"CC", prev:"6%", variant:"2", color:"red", panel:"Endocannabinoid",
+   title:"Cannabinoid Receptor 1", effect:"impulsivity, long-term cannabis use",
+   desc:"Individuals with this SNP have lowered expression of CNR1, which decreases endocannabinoid signaling. This can increase the risk of impulsivity, as well as an increased risk of becoming addicted to cannabis when cannabis is used during adolescence."},
+  {gene:"ADRA1A", allele:"T", result:"TT", prev:"6.5%", variant:"2", color:"red", panel:"Anxiety and Stress Vulnerability",
+   title:"Alpha-1-Adrenergic Receptor", effect:"adrenaline response",
+   desc:"Individuals with this SNP may have an increased adrenaline response which can increase the risk for anxiety, especially in elderly patients."},
+  {gene:"ITIH4", allele:"C", result:"CC", prev:"7.6%", variant:"2", color:"green", panel:"Depression",
+   title:"Inter-Alpha-Trypsin Inhibitor Heavy Chain 4", effect:"complement system, inflammation",
+   desc:"Complement causes cellular destruction and is activated by bacteria, molds and yeasts, viruses, and parasites. This SNP has been shown to inhibit the activation of the complement system. Over-activation of the complement system has been linked as a contributing factor to depression and loss of brain cells in some areas of the brain."},
+  {gene:"RGS2", allele:"G", result:"GG", prev:"7.7%", variant:"2", color:"red", panel:"Anxiety and Stress Vulnerability",
+   title:"Regulator of G Protein Signaling 2", effect:"lower serotonin release and signaling",
+   desc:"Individuals with this SNP make less of this protein that interacts with serotonin receptors and helps with serotonin release. This leads to less serotonin release from the pre-synaptic neurons and lower serotonin signaling in parts of the brain that regulate anxiety. Serotonin is calming, so lower overall serotonin has been associated with anxiety."},
+  {gene:"SLC6A2", allele:"A", result:"AA", prev:"8.6%", variant:"2", color:"red", panel:"ADHD Stimulant and Medication Response",
+   title:"Solute Carrier Family 6 Member 2", effect:"AA and AG lower response to stimulants/MPH",
+   desc:"This SNP is involved in the reuptake or \"recycling\" of norepinephrine. Individuals with variants are prone to decreased response to stimulants due to higher baseline norepinephrine."},
+  {gene:"CCL2", allele:"G", result:"GG", prev:"8.9%", variant:"2", color:"red", panel:"Inflammation", panelSecondary:"Viral Induced Lung Inflammation and ARDS",
+   title:"C-C Motif Chemokine Ligand 2", effect:"more inflammatory injury in brain and body",
+   desc:"Individuals with this SNP can get more tissue damage at sites of inflammation or infection. This signaling molecule calls in other immune cells that are designed to remove damaged tissue, but in excess, this process can be detrimental. Elevated CCL2 has been associated with everything from worse symptoms with viral infections to ASD, arthritis, and gestational diabetes."},
+  {gene:"BHMT R239Q", allele:"A", result:"AA", prev:"9.2%", variant:"2", color:"green", panel:"Choline",
+   title:"Betaine-Homocysteine S-methyltransferase", effect:"better homocysteine conversion",
+   desc:"Individuals with 2 copies of this SNP have a better ability to recycle their homocysteine to methionine. This can be a benefit for post-menopausal breast cancer, birth defects, and heart disease as long as adequate choline levels are maintained. This SNP does not increase choline levels but allows the body to better utilize dietary choline."},
+  {gene:"GCLC", allele:"C", result:"CC", prev:"9.7%", variant:"2", color:"red", panel:"Heavy Metals Detox & Glutathione",
+   title:"Glutamate-Cysteine Ligase Catalytic Subunit", effect:"low glutathione expression, mercury toxicity",
+   desc:"This SNP is associated with decreased GCLC mRNA, which decreases the body's ability to produce glutathione (the master antioxidant). Decreased glutathione limits the body's ability to remove toxins such as heavy metals, pesticides, and carcinogens which can build up and lead to other health complications. This increases an individual's susceptibility to oxidative and drug-induced stress."},
+  {gene:"GSTP1", allele:"G", result:"GG", prev:"11.1%", variant:"2", color:"red", panel:"Heavy Metals Detox & Glutathione",
+   title:"Glutathione S-Transferase Pi 1", effect:"high mercury and toxins, glyphosate sensitivity",
+   desc:"Individuals with this SNP have decreased detox activity of this glutathione transferase (GSTP1), resulting in a lower ability to get rid of heavy metals, pesticides, and other toxins such as smoke by-products. This can lead to high mercury and other toxins, and contribute to greater susceptibility to cognitive decline, birth defects, and other health conditions when exposed to glyphosates (RoundUp), pesticides, and other toxins."},
+  {gene:"GNB3", allele:"T", result:"TT", prev:"11.7%", variant:"2", color:"yellow", panel:"Obesity and Weight Control",
+   title:"G Protein Subunit Beta 3", effect:"lower fat breakdown",
+   desc:"Individuals with this SNP have reduced breakdown of fat cells. This can lead to the body retaining fat, and increase risk of obesity, especially in men."},
+  {gene:"MAOA (R297R)", allele:"G", result:"GG", prev:"11.9%", variant:"2", color:"green", panel:"Anxiety and Stress Vulnerability", panelSecondary:"Attention and Focus",
+   title:"Monoamine Oxidase A", effect:"lower adrenaline",
+   desc:"Individuals with this SNP have a greater ability to break down catecholamines such as adrenaline and dopamine. Lower levels of these catecholamines reduce the risk for anxiety."},
+  {gene:"ESR2", allele:"T", result:"CT", prev:"12.2%", variant:"1", color:"red", panel:"Anxiety and Stress Vulnerability",
+   title:"Estrogen Receptor Beta", effect:"lower activation of ESR2, less anxiolytic effect",
+   desc:"Individuals with this SNP may have lower activation of the estrogen receptor ESR2. Less activation of ESR2 can lead to anxiety and anxiety-like symptoms. This ESR2 variant is most relevant in post-menopausal women and may not be relevant in children and boys."},
+  {gene:"CTLA4", allele:"T", result:"TT", prev:"13.4%", variant:"2", color:"yellow", panel:"Celiac",
+   title:"Cytotoxic T-Lymphocyte Associated Protein 4", effect:"gluten immune response",
+   desc:"This SNP acts as part of the \"brakes\" system for the body's immune response, effectively helping to stop the response. Individuals with 2 variants of this SNP have less ability to turn off their immune response which can lead to increased risk of celiac disease, gluten sensitivity, and other autoimmune issues including patchy hair loss and type 1 diabetes."},
+  {gene:"COL6A5", allele:"A", result:"GA", prev:"13.9%", variant:"1", color:"red", panel:"Obesity and Weight Control",
+   title:"Collagen Type VI Alpha 5 Chain", effect:"fat storage; more expandable collagen",
+   desc:"Individuals with this SNP have an altered type of collagen, that is more expandable and allows for more fat storage. This can lead to a higher risk of a high BMI and obesity, especially in children."},
+  {gene:"TSLP", allele:"T", result:"TT", prev:"14.4%", variant:"2", color:"red", panel:"Mast Cell and IgE",
+   title:"Thymic stromal lymphopoietin (TSLP)", effect:"increased Th2 Mediated inflammation",
+   desc:"TSLP is part of an inflammatory pathway expressed in the body's protective epithelial linings (nose, esophagus, lungs. gut, and blood vessels). Individuals with this variant produce more of this which can contribute to asthma, as well as hives and, even heart disease."},
+  {gene:"ADGRL3", allele:"G", result:"GG", prev:"15%", variant:"2", color:"red", panel:"Attention and Focus",
+   title:"Adhesion G Protein-Coupled Receptor L3", effect:"brain connectivity, lower brain activity, lower glutamine",
+   desc:"Individuals with this SNP likely have lower activity in brain regions such as the hippocampus. Lower activity in the affected brain areas correlates with greater impulsivity, hyperactiveness, and impaired social memory. Individuals with variants respond well to stimulants."},
+  {gene:"STAT3", allele:"G", result:"GG", prev:"15.6%", variant:"2", color:"yellow", panel:"Obesity and Weight Control",
+   title:"Signal Transducer and Activator of Transcription 3", effect:"abdominal weight gain",
+   desc:"Individuals with this SNP gain abdominal weight at a markedly higher rate in response to saturated fat. This SNP interacts with the hunger center of the brain and tends to trigger overeating due to resistance to leptin (turns off the feeling of hunger). See special considerations below"},
+  {gene:"ADRA1A", allele:"G", result:"GG", prev:"15.9%", variant:"2", color:"red", panel:"Anxiety and Stress Vulnerability",
+   title:"Alpha-1-Adrenergic Receptor", effect:"adrenaline response",
+   desc:"Individuals with this SNP may have an increased adrenaline response which can increase the risk for anxiety, especially in elderly patients."},
+  {gene:"HTR2A", allele:"T", result:"TT", prev:"16.8%", variant:"2", color:"red", panel:"Obsession, Rumination, and Compulsions",
+   title:"5-Hydroxytryptamine Receptor 2A", effect:"lower serotonin signaling",
+   desc:"Individuals with this SNP are prone to less effective serotonin signaling. Serotonin is the \"happy and calm\" brain chemical (neurotransmitter). Low post-synaptic serotonin signaling is a risk factor for OCD."},
+  {gene:"PPARGC1A", allele:"C", result:"CC", prev:"17.6%", variant:"2", color:"red", panel:"Neurobehavioral Research",
+   title:"Peroxisome Proliferator-Activated Receptor Gamma, Coactivator 1 Alpha", effect:"poor mitochondrial health",
+   desc:"The protein made by this gene helps you make mitochondria which makes ATP - a crucial energy source for the brain. Individuals with this SNP have less of this protein and thus are less able to maintain the health of their mitochondria."},
+  {gene:"AOC1 (ABP1)", allele:"C", result:"CC", prev:"18.6%", variant:"2", color:"green", panel:"Histamine Intolerance and Food Sensitivity",
+   title:"Amine Oxidase Copper Containing 1", effect:"better food histamine tolerance",
+   desc:"This enzyme is needed for breaking down histamine from foods. Individuals with this SNP have higher enzyme levels and have decreased risk for \"histamine intolerance\"."},
+  {gene:"HTR2A", allele:"A", result:"AA", prev:"18.6%", variant:"2", color:"red", panel:"Obsession, Rumination, and Compulsions",
+   title:"5-Hydroxytryptamine Receptor 2A", effect:"lower serotonin signaling",
+   desc:"Individuals with this SNP are likely prone to less effective serotonin signaling. Serotonin is the \"happy and calm\" brain chemical (neurotransmitter). Low post-synaptic serotonin signaling is a risk factor for OCD."},
+  {gene:"HMOX1 - 413A>T", allele:"T", result:"TT", prev:"19.1%", variant:"2", color:"red", panel:"Neurobehavioral Research",
+   title:"Heme Oxygenase 1", effect:"higher brain inflammation & oxidative stress and iron deposition",
+   desc:"Individuals with this SNP have lower levels of Heme-oxygenase 1 (HO-1). HO-1 has significant anti-inflammatory effects, so having less ability to produce HO-1 increases neuroinflammation. This pathway normally breaks down heme to biliverdin which is an important modulator of immunity. This lower activity pathway also leads to higher brain oxidative stress. Low HO-1 levels have been associated with ASD."},
+  {gene:"HTR3C", allele:"A", result:"AA", prev:"19.4%", variant:"2", color:"red", panel:"Obsession, Rumination, and Compulsions",
+   title:"5-Hydroxytryptamine Receptor 3C", effect:"lower serotonin signaling",
+   desc:"Individuals with this SNP likely have less effective serotonin signaling due to changes in this serotonin receptor. Serotonin is calming and low serotonin signaling can contribute to OCD."},
+  {gene:"NPSR1", allele:"T", result:"TT", prev:"19.6%", variant:"2", color:"red", panel:"Anxiety and Stress Vulnerability",
+   title:"Neuropeptide S Receptor 1", effect:"increased hyper-alertness and anxiety",
+   desc:"Individuals with this SNP tend to have overactive \"wakefulness\" in the brain due to high NPSR1 activity. This can induce anxiety and panic, increased flushing response, and increased histamine release during times of stress."},
+  {gene:"TCN2", allele:"G", result:"GG", prev:"19.8%", variant:"2", color:"red", panel:"Vitamin B12",
+   title:"Transcobalamin 2", effect:"main B12 carrier in brain",
+   desc:"Individuals with 2 copies of this SNP are prone to significantly lower levels of B12 in the brain. The carrier protein encoded by this gene only binds 10-20% of total B12, but is responsible for carrying 80-90% of the B12 into the brain. Individuals with this SNP may require higher levels of B12 in the blood to have adequate levels of B12 in the brain."},
+  {gene:"MET", allele:"G", result:"GG", prev:"19.8%", variant:"2", color:"green", panel:"Autism Spectrum Contributing Factors",
+   title:"MET proto-oncogene", effect:"increased MET protein, lower Autism, less GI issues",
+   desc:"MET is a key regulator in neurite outgrowth and the formation of new synapses and connections in the brain. It also helps to regulate cell proliferation, migration, and motility in the gut and immune system. The C allele (no benefits) is associated with significantly lower levels of MET. MET is a tyrosine kinase cell surface receptor. Lower levels of MET have been highly associated with ASD, reduction in immune system regulation, and maternal production of ASD-associated fetal brain proteins."},
+  {gene:"GLRX", allele:"C", result:"CC", prev:"20.1%", variant:"2", color:"red", panel:"Autism Spectrum Contributing Factors",
+   title:"Glutaredoxin", effect:"oxidative stress for mitochondria and glutathione",
+   warn:"If there is no red for CTH and GLRX3 above, the odds ratio does not apply.",
+   desc:"This SNP is associated with protecting the mitochondria against oxidative stress, inflammation, and recycling glutathione for the mitochondria. Mitochondrial dysfunction and low levels of glutathione have been linked to autism."},
+  {gene:"LEPR", allele:"G", result:"GG", prev:"21.1%", variant:"2", color:"yellow", panel:"Obesity and Weight Control",
+   title:"Leptin Receptor", effect:"overeating",
+   desc:"Leptin is a molecule responsible for inhibiting the feeling of hunger after eating. Individuals with this SNP are less sensitive to leptin, resulting in less ability \"turn off\" the feeling of hunger in the brain, often resulting in overeating and increased risk of obesity. This SNP has also been shown to interact with a high saturated fat diet to further increase obesity risk."},
+  {gene:"VDR ApaI", allele:"C", result:"CC", prev:"21.3%", variant:"2", color:"red", panel:"Vitamin D",
+   title:"Vitamin D Receptor", effect:"taller, less asthma, higher PCOS, and autism",
+   desc:"This gene is a receptor that vitamin D binds to - similar to a docking station. Once the active form of vitamin D binds to this receptor, the complex turns on/off hundreds of different genes. This SNP (especially with 2 copies) has been associated with a higher risk of autism. Alternatively, this SNP can convey benefit as it is associated with lower risk of asthma and scoliosis, and is generally associated with better bone structure."},
+  {gene:"NFE2L2", allele:"T", result:"TG", prev:"21.4%", variant:"1", color:"yellow", panel:"Heavy Metals Detox & Glutathione",
+   title:"Nuclear Factor Erythroid 2-Related Factor 2", effect:"lowered Nrf2 activity, higher inflammation",
+   desc:"Individuals with this SNP may have less ability to make a protective protein called \"Nrf2\" which is needed to turn on various detox and antioxidant pathways, including pathways that lower inflammation, help clear damaged proteins, and oxidative stress. Removing oxidative stress is important for brain health and overall health."},
+  {gene:"MMP9", allele:"T", result:"CT", prev:"22.4%", variant:"1", color:"yellow", panel:"Neurobehavioral Research",
+   title:"Matrix Metallopeptidase 9", effect:"leaky blood brain barrier",
+   desc:"Individuals with this SNP are prone to higher MMP9. Elevations in MMP9 are shown to disrupt the blood-brain barrier, the enzymatic function of many biomarkers, and cause neuroinflammation. These higher levels of MMP9 have been indicated in patients with Autism Spectrum Disorder."},
+  {gene:"NBPF3", allele:"T", result:"TT", prev:"23%", variant:"2", color:"red", panel:"Vitamin B6",
+   title:"Neuroblastoma Breakpoint Family Member 3", effect:"low B6",
+   desc:"Individuals with this SNP have more removal of vitamin B6 due to higher activity of the enzyme \"alkaline phosphatase\". This leads to lower levels of vitamin B6."},
+  {gene:"GLRX3", allele:"G", result:"AG", prev:"24%", variant:"1", color:"green", panel:"Autism Spectrum Contributing Factors",
+   title:"Glutaredoxin 3", effect:"better attachment of iron to proteins",
+   desc:"Individuals with 0 copies of this SNP likely have impaired ability to attach iron to various proteins, which is heavily involved in cognition and brain health. This can impair neurodevelopment and cognitive function, as there is less of the \"active\" and \"usable\" form of iron to be used in proteins and enzymes in the brain, even if iron blood levels are normal."},
+  {gene:"HLA-DQ2.2", allele:"C", result:"TC", prev:"24%", variant:"1", color:"red", panel:"Celiac",
+   title:"Human Leukocyte Antigen DQ2.2", effect:"gluten immune response",
+   desc:"Individuals with this SNP are more efficient at presenting gluten to the immune system, which can trigger gluten sensitivity. Individuals with this SNP have a higher risk for developing gluten intolerance/sensitivity or celiac disease when found in combination with other HLA-DQ risk variants in this panel."},
+  {gene:"SLC25A12", allele:"T", result:"TC", prev:"24.4%", variant:"1", color:"yellow", panel:"Autism Spectrum Contributing Factors",
+   title:"Solute Carrier Family 25 Member 12", effect:"mitochondrial transport of amino acids",
+   desc:"Individuals with 0 or 1 copies of this SNP likely have a lower ability to transport aspartate and glutamate across the mitochondrial membrane. This results in lower levels of aspartate, and higher levels of glutamate that have been associated with Autism."},
+  {gene:"HTR1A", allele:"G", result:"CG", prev:"49.9%", variant:"1", color:"yellow", panel:"Anxiety and Stress Vulnerability", panelSecondary:"Depression", flagged:true,
+   title:"5-Hydroxytryptamine Receptor 1A", effect:"dysregulated serotonin \"thermostat\"",
+   desc:"Individuals with this SNP have an increased number of serotonin autoreceptors that makes them think they have more serotonin than they have, and thus halts the production. This results in lower serotonin in various regions of the brain, which is associated with anxiety."},
+];
+
+/* IntellxxDNA logo block (used on every page) */
+const IX_LOGO = `
+  <div class="ix-header">
+    <div class="ix-logo">
+      <div class="word"><span class="x1">Intell</span><span class="x2">xx</span><span class="x1">DNA</span><sup>™</sup></div>
+      <div class="bar"></div>
+      <div class="tagline">Intelligent Science. Intelligent Living.</div>
+    </div>
+  </div>`;
+
+const IX_THEAD = `
+  <div class="ix-thead">
+    <div><span class="stack"><span class="underline">Gene</span><br>Minor Allele</span></div>
+    <div><span class="stack">Patient<br><span class="underline">Results</span><br>Prevalence</span></div>
+    <div>Variant</div>
+    <div>Panel</div>
+    <div>SNP Key Point</div>
+  </div>`;
+
+function renderRow(s){
+  const flagIcon = s.flagged ? '<span class="flag">⚑</span>' : '';
+  const panelHTML = s.panelSecondary
+    ? `<div class="ix-cell-panel"><span class="underline">${s.panel}</span><div class="secondary">${s.panelSecondary}</div></div>`
+    : `<div class="ix-cell-panel">${s.panel}</div>`;
+  const warn = s.warn ? `<span class="snp-warn"> ${s.warn}</span>` : '';
+  const effectHTML = s.effect ? ` <span class="snp-effect">(${s.effect})</span>` : '';
+  return `
+    <div class="ix-row${s.flagged ? ' flagged':''}">
+      <div class="ix-cell-gene">
+        ${flagIcon}
+        <div class="gene">${s.gene}</div>
+        <div class="allele">${s.allele}</div>
+      </div>
+      <div class="ix-cell-result">
+        <span class="geno">${s.result}</span>
+        <span class="prev">${s.prev}</span>
+      </div>
+      <div class="ix-cell-variant v-${s.color}">${s.variant}</div>
+      ${panelHTML}
+      <div class="snp">
+        <div><span class="snp-title">${s.title}</span>${effectHTML}${warn}</div>
+        <div class="snp-desc">${s.desc}</div>
+      </div>
+    </div>`;
+}
+
+(function buildIxPages(){
+  const wrap = document.getElementById('ix-pages');
+  const ROWS_PER_PAGE = 4;
+  // page 1 has the title block + 3 rows (mirrors original layout)
+  const pages = [];
+  let i = 0;
+  // first page
+  pages.push({title:true, rows:SNPS.slice(0,3)});
+  i = 3;
+  while(i < SNPS.length){
+    pages.push({title:false, rows:SNPS.slice(i, i+ROWS_PER_PAGE)});
+    i += ROWS_PER_PAGE;
+  }
+
+  let html = '';
+  pages.forEach((p, idx)=>{
+    const pn = idx + 1;
+    html += `<div class="page ix-page">${IX_LOGO}`;
+    if(p.title){
+      html += `<div class="ix-title">Hot Spot Summary</div>`;
+      html += `<div class="ix-subtitle">Prepared for: Jenn Pei</div>`;
+    }
+    html += `<div class="ix-table">${IX_THEAD}`;
+    p.rows.forEach(r => html += renderRow(r));
+    html += `</div>`;
+    html += `<div class="ix-pagenum">Page ${pn}</div>`;
+    html += `</div>`;
+  });
+
+  wrap.innerHTML = html;
+})();
+
+
+/* ====================================================
+   Render SpectraCell detail-table rows (page 5)
+==================================================== */
+const TABLE = [
+  {section:"B-VITAMINS"},
+  {n:"Vitamin B1", ref:78, v:82, i:"Borderline"},
+  {n:"Vitamin B2", ref:53, v:60},
+  {n:"Vitamin B3", ref:80, v:86},
+  {n:"Vitamin B6", ref:54, v:60},
+  {n:"Vitamin B12", ref:14, v:25},
+  {n:"Folate", ref:32, v:42},
+  {n:"Pantothenate", ref:7, v:18},
+  {n:"Biotin", ref:34, v:45},
+  {section:"AMINO ACIDS AND METABOLITES"},
+  {n:"Serine", ref:30, v:39},
+  {n:"Glutamine", ref:37, v:42, i:"Borderline"},
+  {n:"Asparagine", ref:39, v:47},
+  {n:"Choline", ref:20, v:27},
+  {n:"Inositol", ref:58, v:60, i:"Borderline"},
+  {n:"Carnitine", ref:46, v:53},
+  {n:"Oleic Acid", ref:65, v:72},
+  {section:"OTHER VITAMINS & MINERALS"},
+  {n:"Vitamin D3", ref:50, v:57},
+  {n:"Vitamin A", ref:70, v:80},
+  {n:"Vitamin K2", ref:30, v:51},
+  {n:"Manganese", ref:50, v:61},
+  {n:"Calcium", ref:38, v:52},
+  {n:"Zinc", ref:37, v:45},
+  {n:"Copper", ref:42, v:53},
+  {n:"Magnesium", notrep:true, v:-1, i:"Result Not Reportable"},
+  {section:"CARBOHYDRATE METABOLISM"},
+  {n:"Fructose Sensitivity", ref:34, v:48},
+  {n:"Glucose-Insulin Interaction", ref:38, v:47},
+  {n:"Chromium", ref:40, v:48},
+  {section:"ANTIOXIDANTS"},
+  {n:"Glutathione", ref:42, v:45, i:"Borderline"},
+  {n:"Cysteine", ref:41, v:48},
+  {n:"Coenzyme Q10", ref:86, v:96},
+  {n:"Selenium", ref:74, v:81},
+  {n:"Vitamin E", ref:84, v:90},
+  {n:"Alpha Lipoic Acid", ref:81, v:84, i:"Borderline"},
+  {n:"Vitamin C", ref:40, v:63},
+];
+
+function rangeBar(ref, value, isBorder, notrep){
+  const W=200, H=10;
+  if(notrep){
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}">
+      <rect x="0" y="0" width="60" height="${H}" fill="#B0B0B0"/>
+      <rect x="60" y="0" width="20" height="${H}" fill="#F2E14C"/>
+      <rect x="80" y="0" width="${W-80}" height="${H}" fill="#A6CE39"/>
+      <circle cx="6" cy="${H/2}" r="5" fill="#D13D2F"/>
+    </svg>`;
+  }
+  const low = Math.max(0, ref - 6);
+  const grayW = (low/100)*W;
+  const yelW  = ((ref-low)/100)*W;
+  const grnW  = ((100-ref)/100)*W;
+  const mx    = (value/100)*W;
+  const fill = isBorder ? '#000' : '#fff';
+  const stroke = isBorder ? '#000' : '#8FB825';
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}">
+    <rect x="0" y="0" width="${grayW}" height="${H}" fill="#B0B0B0"/>
+    <rect x="${grayW}" y="0" width="${yelW}" height="${H}" fill="#F2E14C"/>
+    <rect x="${grayW+yelW}" y="0" width="${grnW}" height="${H}" fill="#A6CE39"/>
+    <circle cx="${mx}" cy="${H/2}" r="4.5" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+  </svg>`;
+}
+
+(function renderTable(){
+  const wrap = document.getElementById('microtable');
+  let html = '';
+  for(const r of TABLE){
+    if(r.section){
+      html += `<div class="row-section">${r.section}</div>`;
+      continue;
+    }
+    const cls = r.notrep ? 'row-data notrep' : (r.i==='Borderline' ? 'row-data borderline' : 'row-data');
+    html += `<div class="${cls}">
+      <div class="name">${r.n}</div>
+      <div>${rangeBar(r.ref||0, r.v, r.i==='Borderline', r.notrep)}</div>
+      <div class="ref">${r.ref?'>'+r.ref+'%':''}</div>
+      <div class="val">${r.v}</div>
+      <div class="interp">${r.i||''}</div>
+    </div>`;
+  }
+  wrap.innerHTML = html;
+})();
+
+
+/* ====================================================
+   Render SpectraCell vertical bars (pages 6 & 7)
+==================================================== */
+function vertBar({label, ticks, value, status}){
+  const W=80, H=110;
+  const barX = 26, barW = 28;
+  const grayH = H*0.30, yelH = H*0.15;
+  const tickEl = ticks.map((t,i)=>{
+    const y = H - (i/(ticks.length-1))*H;
+    return `<text x="${barX-4}" y="${y+3}" font-size="8" fill="#4A4A4A" text-anchor="end">${t}</text>`;
+  }).join('');
+  const min=ticks[0], max=ticks[ticks.length-1];
+  const rel = Math.max(0, Math.min(1, (value-min)/(max-min)));
+  const my = H - rel*H;
+  let mark;
+  if(status==='border'){
+    mark = `<circle cx="${barX+barW/2}" cy="${my}" r="9" fill="#000"/>
+            <text x="${barX+barW/2}" y="${my+3}" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">${value}</text>`;
+  } else if(status==='deficient'){
+    mark = `<circle cx="${barX+barW/2}" cy="${my}" r="9" fill="#D13D2F"/>
+            <text x="${barX+barW/2}" y="${my+3}" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">${value>0?value:''}</text>`;
+  } else {
+    mark = `<circle cx="${barX+barW/2}" cy="${my}" r="9" fill="#fff" stroke="#8FB825"/>
+            <text x="${barX+barW/2}" y="${my+3}" font-size="9" font-weight="700" fill="#4A4A4A" text-anchor="middle">${value}</text>`;
+  }
+  return `<div class="bar-cell">
+    <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}">
+      <rect x="${barX}" y="${H-grayH}" width="${barW}" height="${grayH}" fill="#B0B0B0"/>
+      <rect x="${barX}" y="${H-grayH-yelH}" width="${barW}" height="${yelH}" fill="#F2E14C"/>
+      <rect x="${barX}" y="0" width="${barW}" height="${H*0.55}" fill="#A6CE39"/>
+      ${tickEl}
+      ${mark}
+    </svg>
+    <div class="label">${label}</div>
+  </div>`;
+}
+
+const BV=[
+ {label:"Vitamin B1", ticks:[60,72,85,97,110,122], value:82, status:"border"},
+ {label:"Vitamin B2", ticks:[30,42,54,66,78,90],   value:60, status:"normal"},
+ {label:"Vitamin B3", ticks:[60,73,85,98,110,123], value:86, status:"normal"},
+ {label:"Vitamin B6", ticks:[30,42,54,66,78,90],   value:60, status:"normal"},
+ {label:"Vitamin B12",ticks:[0,8,16,24,32,40],     value:25, status:"normal"},
+ {label:"Folate",     ticks:[15,24,34,43,53,62],   value:42, status:"normal"},
+ {label:"Pantothenate",ticks:[0,8,16,24,32,40],    value:18, status:"normal"},
+ {label:"Biotin",     ticks:[25,34,43,52,61,70],   value:45, status:"normal"},
+];
+document.getElementById('bvit').innerHTML = BV.map(vertBar).join('');
+
+const AA=[
+ {label:"Serine",     ticks:[10,22,34,46,58,70], value:39, status:"normal"},
+ {label:"Glutamine",  ticks:[20,30,40,50,60,70], value:42, status:"border"},
+ {label:"Asparagine", ticks:[20,30,40,50,60,70], value:47, status:"normal"},
+ {label:"Choline",    ticks:[1,9,17,24,32,40],   value:27, status:"normal"},
+ {label:"Inositol",   ticks:[40,50,60,70,80,90], value:60, status:"border"},
+ {label:"Carnitine",  ticks:[31,39,47,56,64,72], value:53, status:"normal"},
+ {label:"Oleic Acid", ticks:[45,55,65,75,85,95], value:72, status:"normal"},
+];
+document.getElementById('amino').innerHTML = AA.map(vertBar).join('');
+
+const OVM=[
+ {label:"Vitamin D3", ticks:[30,42,54,66,78,90], value:57, status:"normal"},
+ {label:"Vitamin A",  ticks:[58,65,72,79,86,93], value:80, status:"normal"},
+ {label:"Vitamin K2", ticks:[0,20,40,60,80,100], value:51, status:"normal"},
+ {label:"Manganese",  ticks:[40,50,60,70,80,90], value:61, status:"normal"},
+ {label:"Calcium",    ticks:[20,29,38,47,56,65], value:52, status:"normal"},
+ {label:"Zinc",       ticks:[20,29,38,47,56,65], value:45, status:"normal"},
+ {label:"Copper",     ticks:[20,30,40,50,60,70], value:53, status:"normal"},
+ {label:"Magnesium",  ticks:[20,30,40,50,60,70], value:0,  status:"deficient"},
+];
+document.getElementById('ovm').innerHTML = OVM.map(vertBar).join('');
+
+const AO=[
+ {label:"Glutathione",     ticks:[25,33,41,49,57,65],   value:45, status:"border"},
+ {label:"Cysteine",        ticks:[30,38,46,54,62,70],   value:48, status:"normal"},
+ {label:"Coenzyme Q10",    ticks:[70,78,86,94,102,110], value:96, status:"normal"},
+ {label:"Selenium",        ticks:[62,68,75,81,88,94],   value:81, status:"normal"},
+ {label:"Vitamin E",       ticks:[70,76,82,88,94,100],  value:90, status:"normal"},
+ {label:"Alpha Lipoic Acid",ticks:[70,76,82,88,94,100], value:84, status:"border"},
+ {label:"Vitamin C",       ticks:[18,34,50,66,82,98],   value:63, status:"normal"},
+];
+document.getElementById('antiox').innerHTML = AO.map(vertBar).join('');
+
+document.getElementById('fruct').innerHTML = vertBar({label:"Fructose Sensitivity", ticks:[20,29,38,47,56,65], value:48, status:"normal"});
+document.getElementById('gluc').innerHTML  = vertBar({label:"Glucose-Insulin Interaction", ticks:[25,34,43,52,61,70], value:47, status:"normal"});
+document.getElementById('chrom').innerHTML = vertBar({label:"Chromium", ticks:[20,30,40,50,60,70], value:48, status:"normal"});
+
+
+/* ====================================================
+   ============ BIOMESIGHT GUT HEALTH ===============
+==================================================== */
+const GUT = {
+  meta:{ patient:'Jen P', sample:'25 July 2025', exported:'4 August 2025', sequencing:'16s rRNA v4 region' },
+  scores:{ overall:52.44, label:'NEEDS IMPROVEMENT', cls:'needs',
+           diversity:80.00, probiotics:44.20, commensals:65.90, pathobionts:33.33 },
+  probiotics:{
+    score:44, label:'POOR', cls:'poor',
+    intro:'Probiotics are beneficial, protective bacteria. Their benefit can be lost when concentrations exceed the ideal range.',
+    items:[
+      {name:'Akkermansia',     pct:'0.035%', range:'0.02 – 3.0%',     interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Bifidobacterium', pct:'0.281%', range:'≥2.5 – 5.0%',     interp:'Low',     cls:'low',     score:'11.2%'},
+      {name:'Blautia',         pct:'2.809%', range:'5.0 – 15.0%',     interp:'Low',     cls:'low',     score:'56.2%'},
+      {name:'Faecalibacterium',pct:'0.092%', range:'≥10.0 – 15.0%',   interp:'Low',     cls:'low',     score:'0.9%'},
+      {name:'Lactobacillus',   pct:'0.004%', range:'0.01 – 0.5%',     interp:'Low',     cls:'low',     score:'40.0%'},
+      {name:'Roseburia',       pct:'0.058%', range:'5.0 – 11.0%',     interp:'Low',     cls:'low',     score:'1.2%'},
+      {name:'Ruminococcus',    pct:'7.683%', range:'0.0 – 15.0%',     interp:'Optimal', cls:'optimal', score:'100%'}
+    ]
+  },
+  commensals:{
+    score:66, label:'NEEDS IMPROVEMENT', cls:'needs',
+    intro:'Commensal bacteria are an integral part of a balanced microbiome, but persistent overgrowth has been correlated with various conditions.',
+    items:[
+      {name:'Bacteroidetes',     pct:'68.153%', range:'0.0 – 35.0%', interp:'High',    cls:'high',    score:'5.3%'},
+      {name:'Bacteroides',  sub:'Bacteroidetes', pct:'56.059%', range:'5.0 – 20.0%', interp:'High', cls:'high', score:'0%'},
+      {name:'Prevotella',   sub:'Bacteroidetes', pct:'5.274%',  range:'0.0 – 30.0%', interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Eubacterium',       pct:'0.331%',  range:'0.0 – 15.0%', interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Oxalobacter',       pct:'0.040%',  range:'0.001 – 0.2%',interp:'Low',     cls:'low',     score:'90.0%'},
+      {name:'Ruminococcus gnavus', pct:'0.004%', range:'0.0 – 0.5%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Streptococcus',     pct:'1.140%',  range:'0.0 – 2.5%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Veillonella',       pct:'0.249%',  range:'0.1 – 2.0%',  interp:'Optimal', cls:'optimal', score:'100%'}
+    ]
+  },
+  pathobionts:{
+    score:33, label:'POOR', cls:'poor',
+    intro:'Pathobionts can contribute to disease when overgrown. A full score is awarded when relative abundance is below adverse-effect levels — having all at 0 is neither necessary nor desired.',
+    items:[
+      {name:'Proteobacteria',                          pct:'10.442%', range:'0.0 – 4.0%',   interp:'High',    cls:'high',    score:'0%'},
+      {name:'Bilophila wadsworthia', sub:'Proteobacteria', pct:'2.280%', range:'0.0 – 0.25%', interp:'High', cls:'high', score:'0%'},
+      {name:'Desulfovibrio',         sub:'Proteobacteria', pct:'0.014%', range:'0.0 – 0.25%', interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Klebsiella',            sub:'Proteobacteria', pct:'0.118%', range:'0.0 – 0.01%', interp:'High', cls:'high', score:'0%'},
+      {name:'Sutterella',            sub:'Proteobacteria', pct:'0.016%', range:'0.0 – 2.5%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Citrobacter freundii',  sub:'Proteobacteria', pct:'0.021%', range:'0.0 – 0.01%', interp:'High', cls:'high', score:'0%'},
+      {name:'Escherichia',           sub:'Proteobacteria', pct:'0.025%', range:'0.0 – 0.3%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Escherichia coli',      sub:'Escherichia',    pct:'0.002%', range:'0.0 – 0.1%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Methanobrevibacter',                      pct:'0%',     range:'0.0 – 0.01%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Fusobacteria',                            pct:'0%',     range:'0.0 – 0.03%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Enterococcus faecalis',                   pct:'0%',     range:'0.0 – 0.01%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Clostridium perfringens',                 pct:'0%',     range:'0.0 – 0.01%',  interp:'Optimal', cls:'optimal', score:'100%'},
+      {name:'Clostridium histolyticum',                pct:'0.002%', range:'0.0 – 0.5%',   interp:'Optimal', cls:'optimal', score:'100%'}
+    ]
+  },
+  scfa:{
+    label:'Needs Improvement', cls:'needs',
+    items:[
+      {name:'Acetate',    pct:'72.49%', target:'≥25%',     status:'Satisfactory', cls:'satisfactory',
+       benefits:['Weight Management'],
+       desc:'Acetate may modulate body weight control through different mechanisms affecting central appetite regulation, gut-satiety hormones, and improvements in lipid metabolism and energy expenditure.'},
+      {name:'Butyrate',   pct:'15.71%', target:'40 – 66%', status:'Low', cls:'low',
+       benefits:['Gut Barrier','Immune Support','Anti-cancer'],
+       desc:'Butyrate is essential for gut barrier maintenance — colonocytes feed on it directly. Dr. Jason Hawrelak recommends butyrate producers constitute at least 40% of the microbiome for systemic anti-inflammatory effect.'},
+      {name:'Propionate', pct:'61.63%', target:'≥12%',     status:'Satisfactory', cls:'satisfactory',
+       benefits:['Blood Pressure','Weight Management','Lower Cholesterol'],
+       desc:'Among the most common SCFAs produced by gut microbiota in response to fiber. Can calm immune cells that drive up blood pressure.'}
+    ]
+  },
+  neuro:{
+    label:'Satisfactory', cls:'satisfactory',
+    items:[
+      {name:'Acetylcholine', pct:'0.004%', target:'<1.00%',          status:'Satisfactory', cls:'satisfactory',
+       benefits:['Concentration','Wakefulness','Memory','Learning']},
+      {name:'Dopamine',      pct:'1.17%',  target:'0.03 – 6.50%',    status:'Satisfactory', cls:'satisfactory',
+       benefits:['Motivation','Motor function']},
+      {name:'GABA',          pct:'32.90%', target:'4 – 40%',         status:'Satisfactory', cls:'satisfactory',
+       benefits:['Calmness','Improved Sleep']},
+      {name:'Histamine',     pct:'1.26%',  target:'0.02 – 2.10%',    status:'Satisfactory', cls:'satisfactory',
+       benefits:['Neuromodulation','Wakefulness']},
+      {name:'Norepinephrine',pct:'0.027%', target:'<6%',             status:'Satisfactory', cls:'satisfactory',
+       benefits:['Concentration','Memory','Learning']},
+      {name:'Serotonin',     pct:'1.29%',  target:'≥0.01%',          status:'Satisfactory', cls:'satisfactory',
+       benefits:['Sleep','Mood','Digestion','Appetite','Libido']}
+    ]
+  },
+  detox:{
+    label:'Satisfactory', cls:'satisfactory',
+    items:[
+      {name:'Beta-glucuronidase (B-GUS)', pct:'0.025%', target:'0.01 – 1.00%', status:'Satisfactory', cls:'satisfactory',
+       benefits:['Estrogen Dominance','Fatigue','Inflammation'],
+       desc:'When in excess, beta-glucuronidase breaks bonds between toxins and glucuronic acid, causing toxins meant to be excreted to be reabsorbed.'}
+    ]
+  },
+  toxins:{
+    label:'Needs Improvement', cls:'needs',
+    items:[
+      {name:'Colibactin',          pct:'0.002%', target:'<0.10%', status:'Satisfactory', cls:'satisfactory', benefits:['Ageing']},
+      {name:'D-Lactate',           pct:'14.77%', target:'<1.00%', status:'High',         cls:'high',         benefits:['Fatigue','Brain Fog'],
+       desc:'Produced by colon bacteria when carbs are not fully absorbed in the small intestine. Elevated blood D-lactate is unusual and typically only seen with malabsorptive disorders.'},
+      {name:'Ethanol',             pct:'0.002%', target:'<0.01%', status:'Satisfactory', cls:'satisfactory', benefits:['Fatigue']},
+      {name:'Hydrogen Sulfide (H2S)', pct:'2.43%', target:'<0.25%', status:'High',       cls:'high',         benefits:['Fatigue','Inflammation','Bloat'],
+       desc:'High concentrations linked to gut inflammation, IBD and colorectal cancer. Can inhibit mitochondrial function directly.'},
+      {name:'Methane',             pct:'0%',     target:'<0.01%', status:'Satisfactory', cls:'satisfactory', benefits:['Constipation','Obesity']}
+    ]
+  },
+  lps:{ neg:78.83, pos:19.92, unk:1.25,
+    items:[
+      {name:'Gram Negative', pct:'78.83%', target:'<50%', status:'High', cls:'high',
+       benefits:['Fatigue','Inflammation','Obesity','Metabolic disorders'],
+       desc:'Gram-negative cell membranes contain LPS — a concern with elevated intestinal permeability. Proteobacteria contain more harmful LPS than Bacteroidetes.'},
+      {name:'Gram Positive', pct:'19.92%', target:'≥45%', status:'Low',  cls:'low', benefits:[],
+       desc:'Gram-positive cell membranes do not contain LPS.'}
+    ]
+  },
+  intolerances:{
+    label:'Satisfactory', cls:'satisfactory',
+    items:[
+      {name:'Lactose',  pct:'1.47%', target:'≥0.20%', status:'Satisfactory', cls:'satisfactory',
+       benefits:['Bloat','Diarrhoea'],
+       desc:'Lactose-degrading bacteria support digestion alongside endogenous lactase. Their presence influences the severity of intolerance.'},
+      {name:'Oxalates', pct:'0.28%', target:'≥0.20%', status:'Satisfactory', cls:'satisfactory',
+       benefits:['Kidney Stones','Mineral absorption','Inflammation','Autoimmunity'],
+       desc:'Oxalate-degrading bacteria reduce mineral binding in the gut and lower kidney stone risk.'}
+    ]
+  },
+  longevity:{
+    label:'Satisfactory', cls:'satisfactory',
+    items:[
+      {name:'Myrosinase', pct:'4.42%', target:'≥0.50%', status:'Satisfactory', cls:'satisfactory',
+       benefits:['Anti-carcinogenic','Anti-ageing'],
+       desc:'Humans cannot produce myrosinase — gut bacteria convert glucosinolates from cruciferous vegetables into bioactive isothiocyanates like sulforaphane.'}
+    ]
+  },
+  recs:{
+    foods_add:[
+      ['Cranberries',6],['Strawberries',6],['Zhenjiang aromatic vinegar',6],['Green tea',5],['Matcha',5],['Pomegranate',5],
+      ['Apples',3],['Apricots',3],['Carrots',3],['Cherries',3],['Garlic',3],['Oranges',3],
+      ['Cinnamon',3],['Pinto beans',3],['Acacia tree',2],['Cottonseed flour',2],['Soy flour',2],['Cloves',2],
+      ['Pistachios',2],['Pearled whole grain barley',1],['Thyme',1],['Barley',1],['Mushrooms',1],['Rye',1],
+      ['Seaweed',1],['Chamomile',1],['Vanilla',1]
+    ],
+    prebiotics_add:[
+      ['Lactulose',6],['Pectin',3],['Yeast beta-glucan',2],['Acacia fiber',2],['Arabinogalactan',2],['Gum arabic',2],
+      ['Raffinose',2],['Resveratrol',2],['Stachyose',2],['Xylooligosaccharides',2],['Psyllium',2],['Calanus oil',2],
+      ['Omega-3',2],['Canna edulis RS3',1],['Berberine ⚠',1],['Neem ⚠',1],['Oregano ⚠',1],['Thyme ⚠',1],
+      ['Beta-glucan',1],['Konjac glucomannan',1],['Turmeric',1],['Nicotinamide mononucleotide',1],
+      ['Quercetin',1],['ShenLing BaiZhu San',1],['Cinnamon',1],['Garlic',1]
+    ],
+    prebiotics_reduce:[
+      ['Resistant starch',2],['2-Fucosyllactose',1],['Milk oligosaccharides',1],['Partially Hydrolyzed Guar Gum',1],
+      ['Pea fiber',1],['Fructooligosaccharides',1],['Galactooligosaccharides',1],['Lactose',1],
+      ['Chitooligosaccharides',1],['Mannose oligosaccharides',1],['Triphala',1],['Licorice',1],['Taurine',1]
+    ],
+    probiotics_add:[
+      ['Bifidobacterium longum BB536',2],['Bacillus coagulans',1],['Bifidobacterium longum',1],
+      ['Lactobacillus acidophilus',1],['Lactobacillus rhamnosus HN001',1],['Lactobacillus rhamnosus GG',1]
+    ],
+    lifestyle_add:[
+      ['High fiber foods',4],['Exercise',3],['Plant-based diet',1],['Eat the rainbow',1],
+      ['Seasonal foods',1],['Avoid snacking',1],['Spend time in nature',1]
+    ],
+    lifestyle_reduce:[
+      ['Animal products & fat',4],['Sulfur additives',1],['Lactose',1],['Starches',1],['Milk fats',1]
+    ]
+  }
+};
+
+/* Renderers */
+function arcGauge(val, cls, big){
+  // Semi-circle gauge from -90° to 90°. val is 0-100.
+  const r = big ? 56 : 38;
+  const cx = big ? 70 : 50;
+  const cy = big ? 70 : 50;
+  const w  = big ? 140 : 100;
+  const h  = big ? 80 : 60;
+  const stroke = big ? 10 : 7;
+  const C = Math.PI * r;
+  const filled = (val/100) * C;
+  const colorMap = {poor:'#E74C3C', needs:'#F39C12', satisfactory:'#27AE60', optimal:'#1E8449',
+                    high:'#E74C3C', low:'#F39C12'};
+  const color = colorMap[cls] || '#999';
+  return `<svg class="gauge-svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+    <path d="M ${cx-r} ${cy} A ${r} ${r} 0 0 1 ${cx+r} ${cy}" fill="none" stroke="#eee" stroke-width="${stroke}" stroke-linecap="round"/>
+    <path d="M ${cx-r} ${cy} A ${r} ${r} 0 0 1 ${cx+r} ${cy}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round"
+          stroke-dasharray="${filled} ${C}"/>
+  </svg>`;
+}
+
+function bsHeader(){
+  return `<div class="bs-header">
+    <div class="bs-logo"><span class="dot"></span>
+      <div class="name"><b>biome</b>sight</div>
+    </div>
+    <div class="bs-meta">
+      <div>Report for: <b>${GUT.meta.patient}</b></div>
+      <div>Sample collection date: <b>${GUT.meta.sample}</b></div>
+      <div>Export date: ${GUT.meta.exported}</div>
+      <div>Sequencing: ${GUT.meta.sequencing}</div>
+    </div>
+  </div>`;
+}
+
+function bsRow(it, type){
+  const sub = it.sub ? `<span class="sub">(${it.sub})</span>` : '';
+  return `<div class="bs-row">
+    <div class="bact">${it.name}${sub}</div>
+    <div class="range" style="text-align:left;color:#888;font-size:9px">${type==='path'?'lower is better':'optimal range'}</div>
+    <div class="pct">${it.pct}</div>
+    <div class="range">${it.range}</div>
+    <div><span class="interp ${it.cls}">${it.interp}</span></div>
+    <div class="score-pct">${it.score}</div>
+  </div>`;
+}
+
+function bsTable(items, type){
+  return `<div class="bs-table-head">
+    <div>Bacteria</div><div></div><div>Patient %</div><div>Target Range</div><div style="text-align:center">Status</div><div style="text-align:right">Score</div>
+  </div>
+  ${items.map(it=>bsRow(it,type)).join('')}`;
+}
+
+function metaCard(it){
+  const benefits = (it.benefits||[]).map(b=>`<span class="benefit">${b}</span>`).join('');
+  const desc = it.desc ? `<div class="desc">${it.desc}</div>` : '';
+  return `<div class="bs-meta-card">
+    <div class="head">
+      <div>
+        <div class="name">${it.name}</div>
+        <div class="target">Aim for ${it.target}</div>
+      </div>
+      <div class="status-pill clr-${it.cls} bg-${it.cls}">${it.status}</div>
+    </div>
+    <div class="pct-line">${it.pct} <span class="lbl">your level</span></div>
+    <div class="benefits">${benefits}</div>
+    ${desc}
+  </div>`;
+}
+
+function recPills(items, type){
+  return items.map(([n,c])=>`<div class="rec-pill ${type==='reduce'?'reduce':''}"><span class="count">${c}</span>${n}</div>`).join('');
+}
+
+(function buildGut(){
+  const wrap = document.getElementById('bs-pages');
+  let html = '';
+
+  // ========= PAGE 1: Overview =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-overview">
+      <h3>Gut Wellness Score</h3>
+      <div style="position:relative;display:inline-block">
+        ${arcGauge(GUT.scores.overall, GUT.scores.cls, true)}
+        <div style="position:absolute;left:0;right:0;top:34px;text-align:center">
+          <div class="gauge-num clr-${GUT.scores.cls}">${GUT.scores.overall}</div>
+          <div class="gauge-status clr-${GUT.scores.cls}">${GUT.scores.label}</div>
+        </div>
+      </div>
+      <div class="bs-subscores">
+        <div class="bs-subscore"><div class="name">Diversity</div><div class="num">${GUT.scores.diversity.toFixed(2)}%</div>
+          <div class="minigauge"><div class="fill" style="width:${GUT.scores.diversity}%;background:#27AE60"></div></div></div>
+        <div class="bs-subscore"><div class="name">Probiotics</div><div class="num">${GUT.scores.probiotics.toFixed(2)}%</div>
+          <div class="minigauge"><div class="fill" style="width:${GUT.scores.probiotics}%;background:#E74C3C"></div></div></div>
+        <div class="bs-subscore"><div class="name">Commensals</div><div class="num">${GUT.scores.commensals.toFixed(2)}%</div>
+          <div class="minigauge"><div class="fill" style="width:${GUT.scores.commensals}%;background:#F39C12"></div></div></div>
+        <div class="bs-subscore"><div class="name">Pathobionts</div><div class="num">${GUT.scores.pathobionts.toFixed(2)}%</div>
+          <div class="minigauge"><div class="fill" style="width:${GUT.scores.pathobionts}%;background:#E74C3C"></div></div></div>
+      </div>
+      <p class="bs-overview-note">Food and supplement recommendations are based on selectively feeding or crowding out specific bacteria and do not imply tolerance for a particular individual. Introduce new foods and prebiotics gently and slowly.</p>
+    </div>
+    <div class="bs-pn">Page 1 · Overview</div>
+  </div>`;
+
+  // ========= PAGE 2: Probiotics =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-cat-banner">
+      <div class="left">
+        <h3>Probiotics</h3>
+        <p>${GUT.probiotics.intro}</p>
+      </div>
+      <div class="right">
+        <div class="num clr-${GUT.probiotics.cls}">${GUT.probiotics.score}</div>
+        <div class="status clr-${GUT.probiotics.cls}">${GUT.probiotics.label}</div>
+      </div>
+    </div>
+    ${bsTable(GUT.probiotics.items, 'gold')}
+    <div class="bs-pn">Page 2 · Probiotics</div>
+  </div>`;
+
+  // ========= PAGE 3: Commensals =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-cat-banner">
+      <div class="left">
+        <h3>Commensals</h3>
+        <p>${GUT.commensals.intro}</p>
+      </div>
+      <div class="right">
+        <div class="num clr-${GUT.commensals.cls}">${GUT.commensals.score}</div>
+        <div class="status clr-${GUT.commensals.cls}">${GUT.commensals.label}</div>
+      </div>
+    </div>
+    ${bsTable(GUT.commensals.items, 'gold')}
+    <div class="bs-pn">Page 3 · Commensals</div>
+  </div>`;
+
+  // ========= PAGE 4: Pathobionts =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-cat-banner">
+      <div class="left">
+        <h3>Pathobionts</h3>
+        <p>${GUT.pathobionts.intro}</p>
+      </div>
+      <div class="right">
+        <div class="num clr-${GUT.pathobionts.cls}">${GUT.pathobionts.score}</div>
+        <div class="status clr-${GUT.pathobionts.cls}">${GUT.pathobionts.label}</div>
+      </div>
+    </div>
+    ${bsTable(GUT.pathobionts.items, 'path')}
+    <div class="bs-pn">Page 4 · Pathobionts</div>
+  </div>`;
+
+  // ========= PAGE 5: SCFAs + Neurotransmitters =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-section-title">Short Chain Fatty Acids
+      <span class="pill clr-${GUT.scfa.cls} bg-${GUT.scfa.cls}">${GUT.scfa.label}</span>
+    </div>
+    <p style="font-size:10px;color:#666;line-height:1.5;margin-bottom:10px">SCFAs are beneficial anti-inflammatory metabolites produced by gut bacteria.</p>
+    <div class="bs-meta-grid">
+      ${GUT.scfa.items.map(metaCard).join('')}
+    </div>
+
+    <div class="bs-section-title">Neurotransmitters
+      <span class="pill clr-${GUT.neuro.cls} bg-${GUT.neuro.cls}">${GUT.neuro.label}</span>
+    </div>
+    <p style="font-size:10px;color:#666;line-height:1.5;margin-bottom:10px">Gut microbiota communicate with the brain via the vagus nerve and HPA axis. This does not reflect brain neurotransmitter levels.</p>
+    <div class="bs-meta-grid">
+      ${GUT.neuro.items.map(metaCard).join('')}
+    </div>
+    <div class="bs-pn">Page 5 · Metabolites</div>
+  </div>`;
+
+  // ========= PAGE 6: Toxins + LPS + Detox =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-section-title">Toxins
+      <span class="pill clr-${GUT.toxins.cls} bg-${GUT.toxins.cls}">${GUT.toxins.label}</span>
+    </div>
+    <p style="font-size:10px;color:#666;line-height:1.5;margin-bottom:10px">Pathogenic gut bacteria produce small amounts of substances with various degrees of toxicity to humans.</p>
+    <div class="bs-meta-grid">
+      ${GUT.toxins.items.map(metaCard).join('')}
+    </div>
+
+    <div class="bs-section-title">Lipopolysaccharides (LPS) — Gram Stain</div>
+    <div class="bs-lps-block">
+      <svg viewBox="0 0 120 120" width="160" height="160">
+        <circle cx="60" cy="60" r="50" fill="#E74C3C"/>
+        <path d="M 60 10 A 50 50 0 0 0 35.5 105.7 L 60 60 Z" fill="#27AE60"/>
+        <path d="M 35.5 105.7 A 50 50 0 0 0 38.5 107.5 L 60 60 Z" fill="#999"/>
+        <circle cx="60" cy="60" r="22" fill="#fff"/>
+      </svg>
+      <div class="bs-lps-legend">
+        <div class="row"><span class="sw" style="background:#E74C3C"></span><b>Gram-Negative: 78.83%</b></div>
+        <div class="row"><span class="sw" style="background:#27AE60"></span>Gram-Positive: 19.92%</div>
+        <div class="row"><span class="sw" style="background:#999"></span>Unknown: 1.25%</div>
+        <div style="font-size:9px;color:#666;margin-top:8px;line-height:1.5;max-width:340px">
+          Gram-negative cell membranes contain LPS — a concern with elevated intestinal permeability. Proteobacteria carry more harmful LPS than Bacteroidetes.
+        </div>
+      </div>
+    </div>
+    <div class="bs-meta-grid" style="margin-top:10px">
+      ${GUT.lps.items.map(metaCard).join('')}
+    </div>
+
+    <div class="bs-section-title">Detoxification
+      <span class="pill clr-${GUT.detox.cls} bg-${GUT.detox.cls}">${GUT.detox.label}</span>
+    </div>
+    <div class="bs-meta-grid">
+      ${GUT.detox.items.map(metaCard).join('')}
+    </div>
+    <div class="bs-pn">Page 6 · Toxins, LPS &amp; Detox</div>
+  </div>`;
+
+  // ========= PAGE 7: Food Intolerances + Longevity =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <div class="bs-section-title">Food Intolerances
+      <span class="pill clr-${GUT.intolerances.cls} bg-${GUT.intolerances.cls}">${GUT.intolerances.label}</span>
+    </div>
+    <p style="font-size:10px;color:#666;line-height:1.5;margin-bottom:10px">Some intolerances are influenced by gut microbiota through enzyme production. Higher than median is desired for both lactose &amp; oxalate degraders.</p>
+    <div class="bs-meta-grid">
+      ${GUT.intolerances.items.map(metaCard).join('')}
+    </div>
+
+    <div class="bs-section-title">Longevity
+      <span class="pill clr-${GUT.longevity.cls} bg-${GUT.longevity.cls}">${GUT.longevity.label}</span>
+    </div>
+    <p style="font-size:10px;color:#666;line-height:1.5;margin-bottom:10px">Gut microbiota produce enzymes the body cannot make itself, processing food substrates into beneficial metabolites with antioxidative properties.</p>
+    <div class="bs-meta-grid">
+      ${GUT.longevity.items.map(metaCard).join('')}
+    </div>
+    <div class="bs-pn">Page 7 · Food Intolerances &amp; Longevity</div>
+  </div>`;
+
+  // ========= PAGE 8: Recommendations =========
+  html += `<div class="page bs-page">
+    ${bsHeader()}
+    <h3 style="font-family:Georgia,serif;font-size:22px;font-weight:400;text-align:center;margin:6px 0 4px">Overall Recommendations</h3>
+    <p style="font-size:10px;color:#666;text-align:center;margin-bottom:18px;line-height:1.5;max-width:78%;margin-left:auto;margin-right:auto">
+      Personalized using the completed health profile and microbiome sample. Selectively feed or crowd out specific bacteria — does not imply tolerance for a particular individual. Introduce new foods and supplements gently and slowly.
+    </p>
+
+    <div class="rec-section">
+      <h4><span class="lead add"></span>Foods to add or continue<span class="help">Number = bacteria expected to improve</span></h4>
+      <div class="rec-grid">${recPills(GUT.recs.foods_add)}</div>
+    </div>
+
+    <div class="rec-section">
+      <h4><span class="lead add"></span>Prebiotics to add or continue<span class="help">Choose 1–2; introduce separately, start small</span></h4>
+      <div class="rec-grid">${recPills(GUT.recs.prebiotics_add)}</div>
+    </div>
+
+    <div class="rec-section">
+      <h4><span class="lead reduce"></span>Prebiotics to reduce<span class="help">Number = bacteria expected to worsen</span></h4>
+      <div class="rec-grid">${recPills(GUT.recs.prebiotics_reduce, 'reduce')}</div>
+    </div>
+
+    <div class="rec-section">
+      <h4><span class="lead add"></span>Probiotics to add or continue</h4>
+      <div class="rec-grid">${recPills(GUT.recs.probiotics_add)}</div>
+    </div>
+
+    <div class="rec-section">
+      <h4><span class="lead add"></span>Lifestyle to add or continue</h4>
+      <div class="rec-grid">${recPills(GUT.recs.lifestyle_add)}</div>
+    </div>
+
+    <div class="rec-section">
+      <h4><span class="lead reduce"></span>Lifestyle to reduce</h4>
+      <div class="rec-grid">${recPills(GUT.recs.lifestyle_reduce, 'reduce')}</div>
+    </div>
+    <div class="bs-pn">Page 8 · Overall Recommendations</div>
+  </div>`;
+
+  wrap.innerHTML = html;
+})();
+</script>
+
+</body>
+</html>
